@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Concept Knowledge Graph · LDICA{% endblock %}
+{% block content %}
+<section class="page-intro kg-intro">
+  <span class="eyebrow"><span class="pulse"></span> PHASE 4 · CONCEPT KNOWLEDGE GRAPH</span>
+  <h1>See how the concepts <em>connect.</em></h1>
+  <p>Explore the LDICA topic catalogue as a navigable concept map. Select a node to open its lesson, inspect related topics, and find a suggested route between two concepts.</p>
+  <div class="kg-disclaimer"><strong>How to read this map:</strong> links are learning-navigation suggestions built from the topic catalogue. They are not a claim that every connection is explicitly stated in the supplied PDFs. Unit links show syllabus grouping, not prerequisite requirements.</div>
+</section>
+
+<section class="kg-controls panel">
+  <div class="kg-search-wrap">
+    <label for="kg-search">Find a concept</label>
+    <input id="kg-search" type="search" placeholder="Search title or topic summary…" autocomplete="off">
+  </div>
+  <div class="kg-filter-wrap">
+    <label for="kg-unit">Filter by unit</label>
+    <select id="kg-unit">
+      <option value="0">All five units</option>
+      <option value="1">Unit 1 · Operational Amplifiers</option>
+      <option value="2">Unit 2 · Op-Amp, 555 & 565</option>
+      <option value="3">Unit 3 · Data Converters</option>
+      <option value="4">Unit 4 · Digital Logic</option>
+      <option value="5">Unit 5 · Sequential Circuits</option>
+    </select>
+  </div>
+  <div class="kg-actions">
+    <button type="button" class="button secondary small" id="kg-fit">Fit map</button>
+    <button type="button" class="button secondary small" id="kg-clear">Clear selection</button>
+  </div>
+</section>
+
+<section class="kg-layout">
+  <div class="kg-map-panel panel">
+    <div class="kg-map-heading"><div><span class="eyebrow">INTERACTIVE MAP</span><h2>Topic network</h2></div><span class="kg-count" id="kg-count">Loading concepts…</span></div>
+    <div class="kg-legend">
+      <span><i class="kg-dot kg-unit-dot"></i> Unit anchor</span>
+      <span><i class="kg-dot kg-topic-dot"></i> Lesson topic</span>
+      <span><i class="kg-line kg-curated-line"></i> Suggested learning link</span>
+      <span><i class="kg-line kg-unit-line"></i> Unit grouping</span>
+    </div>
+    <div class="kg-canvas-wrap" id="kg-canvas-wrap">
+      <svg id="kg-svg" viewBox="0 0 1200 780" role="img" aria-label="Interactive LDICA concept knowledge graph">
+        <text x="600" y="380" text-anchor="middle" fill="#667487">Loading concept map…</text>
+      </svg>
+    </div>
+    <p class="kg-help">Select a node to inspect it. Search dims unrelated topics. The map can be scrolled horizontally on smaller screens.</p>
+  </div>
+
+  <aside class="kg-detail-column">
+    <section class="panel kg-detail-panel" id="kg-detail" aria-live="polite">
+      <span class="eyebrow">CONCEPT DETAILS</span>
+      <h2 id="kg-detail-title">Choose a topic</h2>
+      <p id="kg-detail-summary">Select any node in the map to see its unit, short explanation, formula (when available), and connected topics.</p>
+      <div id="kg-detail-meta" class="kg-detail-meta"></div>
+      <div id="kg-detail-formula" class="kg-formula" hidden></div>
+      <div class="kg-detail-actions"><a id="kg-lesson-link" class="button primary" href="/learn/">Open lesson →</a></div>
+      <div class="kg-related-heading">Connected concepts</div>
+      <ul id="kg-related" class="kg-related"><li>Connections will appear here.</li></ul>
+    </section>
+    <section class="panel kg-path-panel">
+      <span class="eyebrow">LEARNING ROUTE</span>
+      <h2>Find a path</h2>
+      <p>Choose a starting topic and a destination. The tool finds the shortest route through available map links.</p>
+      <label for="kg-from">Start concept</label><select id="kg-from"></select>
+      <label for="kg-to">Destination concept</label><select id="kg-to"></select>
+      <button class="button secondary full" type="button" id="kg-find-path">Find suggested path</button>
+      <div id="kg-path-result" class="kg-path-result" aria-live="polite">A route will appear here.</div>
+    </section>
+  </aside>
+</section>
+<script defer src="{{ url_for('static', filename='js/knowledge-graph.js') }}"></script>
+{% endblock %}

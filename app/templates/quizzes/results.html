@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Practice Results | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">PRACTICE REVIEW</span><h1>Your result: <em>{{ score }}/{{ questions|length }}</em></h1><p>Review each explanation and revisit the topics you want to strengthen.</p></section>
+<div class="result-list">{% for question in questions %}<article class="result-card"><div class="result-title"><span class="unit-number">0{{ loop.index }}</span><h2>{{ question.q }}</h2><span class="result-badge {{ 'correct' if answers[loop.index0] == question.answer else 'incorrect' }}">{{ 'Correct' if answers[loop.index0] == question.answer else 'Review' }}</span></div><p><strong>Correct answer:</strong> {{ question.choices[question.answer] }}</p><p>{{ question.explanation }}</p></article>{% endfor %}</div>
+<div class="hero-actions"><a class="button primary" href="{{ url_for('practice.index') }}">Try again</a><a class="button secondary" href="{{ url_for('dashboard.index') }}">Back to dashboard</a></div>
+{% endblock %}

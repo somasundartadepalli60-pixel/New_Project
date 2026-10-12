@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Search lessons and source PDFs | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <span class="eyebrow">PHASE 15 · LOCAL KNOWLEDGE SEARCH</span>
+  <h1>Find the <em>right explanation.</em></h1>
+  <p>Search the local LDICA lesson catalogue and text-extractable pages in the bundled source PDFs. Results link to lessons or the original document page; scanned pages without text require OCR and may not appear.</p>
+</section>
+<section class="search-workspace">
+  <form class="search-panel phase15-search" method="get" action="{{ url_for('search.index') }}">
+    <label class="search-field" for="q"><span aria-hidden="true">⌕</span><input id="q" name="q" value="{{ query }}" maxlength="120" placeholder="Search e.g. ADC resolution, 555 astable, JK flip-flop" required></label>
+    <select name="unit" aria-label="Filter by unit"><option value="">All units</option>{% for n in range(1, 6) %}<option value="{{ n }}" {% if unit == n %}selected{% endif %}>Unit {{ n }}</option>{% endfor %}</select>
+    <button class="button primary" type="submit">Search</button>
+  </form>
+{% if pdfs_requiring_ocr %}<aside class="callout-note" role="status"><strong>Some PDFs need OCR for full-text search.</strong><p>{{ unindexed_pdf_pages }} pages across {{ pdfs_requiring_ocr|length }} document(s) have no extractable text. They can still be opened in the source library, but those pages will not appear in keyword results until OCR text is added.</p><ul>{% for filename in pdfs_requiring_ocr %}<li>{{ filename }}</li>{% endfor %}</ul></aside>{% endif %}
+  {% if query %}
+  <div class="search-meta"><strong>{{ results|length }} result{{ '' if results|length == 1 else 's' }}</strong><span>Terms: {{ terms|join(', ') if terms else 'no searchable terms' }}</span><span>{{ indexed_pdf_pages }} PDF pages indexed in this process</span></div>
+  {% if not pdf_search_available %}<p class="source-note">PDF text extraction is unavailable or no selectable text was found. Lesson search still works. Install project dependencies and ensure pypdf is available to enable PDF-page search.</p>{% endif %}
+  {% if results %}<div class="search-results">
+    {% for item in results %}
+    <article class="search-result-card">
+      <div class="search-result-top"><span class="search-kind">{{ item.kind }}</span>{% if item.unit %}<span class="search-unit">Unit {{ item.unit }}</span>{% endif %}{% if item.page %}<span class="search-unit">Page {{ item.page }}</span>{% endif %}</div>
+      <h2><a href="{{ item.url }}">{{ item.title }}</a></h2>
+      <p class="search-result-summary">{{ item.summary }}</p>
+      <p class="search-snippet">{{ item.snippet }}</p>
+      <a class="text-link" href="{{ item.url }}">{{ 'Open source page →' if item.kind == 'source PDF' else 'Open lesson →' }}</a>
+    </article>
+    {% endfor %}
+  </div>{% else %}<div class="empty-state"><h3>No matches found</h3><p>Try a shorter phrase, a formula term, or remove the unit filter. Search only reports content actually present in the local catalogue or extracted PDFs.</p></div>{% endif %}
+  {% else %}<div class="search-empty"><h2>Search across the course</h2><p>Try one of these terms to get started:</p><div class="search-chips">{% for sample in ['inverting amplifier','555 astable','ADC resolution','successive approximation','JK flip-flop','multiplexer'] %}<a href="{{ url_for('search.index', q=sample) }}">{{ sample }}</a>{% endfor %}</div><p class="source-note">This search is local-first and does not send your queries to an external AI provider.</p></div>{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Mock Exam Results · LDICA{% endblock %}
+{% block content %}
+<section class="page-heading"><p class="eyebrow">ASSESSMENT REVIEW</p><h1>Your result</h1><p>{{ result.score }} correct out of {{ result.total }} ({{ (100*result.score/result.total)|round|int if result.total else 0 }}%). {% if result.timed_out %}This attempt was submitted after the time limit.{% else %}Time recorded: {{ (result.elapsed_seconds // 60) }}m {{ result.elapsed_seconds % 60 }}s.{% endif %}</p><a class="button button-primary" href="{{ url_for('assessments.mock_landing') }}">Back to mock exams</a></section>
+<section class="content-list">{% for item in result.answers %}<article class="panel question-card"><span class="audit-check {{ 'passed' if item.is_correct else 'missing' }}">{{ 'Correct' if item.is_correct else 'Review this answer' }}</span><h2>{{ loop.index }}. {{ item.question }}</h2><p><strong>Your answer:</strong> {{ item.choices[item.selected|int] if item.selected in ['0','1','2','3'] else 'Not answered' }}</p><p><strong>Correct answer:</strong> {{ item.choices[item.correct] }}</p><p>{{ item.explanation }}</p></article>{% endfor %}</section>
+{% endblock %}

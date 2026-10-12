@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Daily Study Pack | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{{ url_for('planner.index') }}">Study plan</a><span>/</span><span>Daily pack</span></div>
+<section class="page-intro"><span class="eyebrow">GENERATED FROM YOUR SAVED SCHEDULE</span><h1>Today's study <em>pack.</em></h1><p>{{ selected_date.strftime('%A, %d %B %Y') }} · This page assembles the lesson summaries, formulas, worked examples, and recall prompts for the topics scheduled on this date.</p></section>
+{% if lessons %}
+<div class="plan-summary"><div><strong>{{ lessons|length }}</strong><span>Topic sessions</span></div><div><strong>{{ lessons|sum(attribute='task.estimated_minutes') }}</strong><span>Planned minutes</span></div><div><strong>{{ lessons|length }}</strong><span>Recall checks</span></div></div>
+{% for item in lessons %}
+<article class="planner-content-card" style="margin-bottom:14px"><span class="eyebrow">UNIT {{ item.task.topic.unit_number }} · {{ item.task.estimated_minutes }} MINUTES</span><h2>{{ item.task.topic.title }}</h2><p>{{ item.task.topic.explanation }}</p>{% if item.task.topic.formula %}<div class="formula-card"><span class="formula-label">KEY RELATIONSHIP</span><code>{{ item.task.topic.formula }}</code></div>{% endif %}<h3>{{ item.detail.worked_title }}</h3><ol>{% for step in item.detail.worked_steps %}<li>{{ step }}</li>{% endfor %}</ol><p><strong>Worked example:</strong> {{ item.detail.example }}</p><details><summary>Recall question: {{ item.detail.check }}</summary><p>{{ item.detail.answer }}</p></details><a class="button primary" href="{{ url_for('learning.lesson', slug=item.task.topic.slug) }}">Open full lesson →</a></article>
+{% endfor %}
+{% else %}<div class="empty-state"><h3>No sessions are scheduled for this date</h3><p>Choose another date in your active plan or generate a new study schedule.</p><a href="{{ url_for('planner.index') }}">Back to planner →</a></div>{% endif %}
+{% endblock %}

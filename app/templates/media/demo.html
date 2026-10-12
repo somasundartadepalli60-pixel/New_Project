@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ demo.title }} | LDICA Media Lab{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{{ url_for('media.index') }}">Media lab</a><span>/</span><span>{{ demo.title }}</span></div>
+<section class="page-intro"><span class="eyebrow">INTERACTIVE DEMONSTRATION</span><h1>{{ demo.title }}<em>.</em></h1><p>Change the inputs and observe how the idealised model responds. Use the lesson and original source notes for assumptions and limitations.</p></section>
+<section class="demo-panel">
+{% if demo.kind == 'gain' %}
+<h2>Closed-loop amplifier calculator</h2><p>Compare the ideal gain for the two common feedback configurations.</p>
+<div class="demo-controls"><label>Input voltage (V)<input id="vin" type="number" step="any" value="0.2"></label><label>Input resistance Rin (Ω)<input id="rin" type="number" min="0.000001" step="any" value="10000"></label><label>Feedback resistance Rf (Ω)<input id="rf" type="number" min="0.000001" step="any" value="47000"></label><label>Ground resistance Rg (Ω)<input id="rg" type="number" min="0.000001" step="any" value="10000"></label></div>
+<div class="simulation-stage"><svg viewBox="0 0 700 180" role="img" aria-label="Conceptual inverting amplifier"><path d="M230 35 L230 145 L350 90 Z M80 65 H230 M80 115 H230 M350 90 H600" fill="none" stroke="#1c78b7" stroke-width="2.5"/><path d="M120 90 V155 H420 V105" fill="none" stroke="#16816c" stroke-width="2" stroke-dasharray="5 5"/><g fill="#172536" font-size="14"><text x="242" y="70">−</text><text x="242" y="120">+</text><text x="55" y="57">Vin</text><text x="610" y="85">Vout</text><text x="260" y="25">Op-amp concept</text><text x="300" y="171">Feedback path (conceptual)</text></g></svg></div>
+<div id="gain-output" class="demo-output" aria-live="polite"></div>
+{% elif demo.kind == 'timer' %}
+<h2>555 astable timing explorer</h2><p>Watch a conceptual capacitor charge/discharge ramp between one-third and two-thirds of the supply.</p>
+<div class="demo-controls"><label>RA (kΩ)<input id="ra" type="number" min=".1" max="1000" step=".1" value="10"></label><label>RB (kΩ)<input id="rb" type="number" min=".1" max="1000" step=".1" value="10"></label><label>C (µF)<input id="cap" type="number" min=".001" max="1000" step=".001" value="10"></label><button id="timer-play" class="button primary" type="button">Pause animation</button></div>
+<div class="simulation-stage"><svg id="timer-svg" viewBox="0 0 700 240" role="img" aria-label="Animated 555 timer capacitor waveform"><path d="M45 25 V200 H660" fill="none" stroke="#8293a3" stroke-width="1.5"/><path d="M45 83 H660 M45 142 H660" fill="none" stroke="#c5d1d9" stroke-dasharray="4 5"/><text x="50" y="17" fill="#172536" font-size="13">Capacitor voltage (normalised)</text><path id="timer-wave" d="" fill="none" stroke="#1c78b7" stroke-width="3"/></svg></div><div id="timer-output" class="demo-output" aria-live="polite"></div>
+{% elif demo.kind == 'adc' %}
+<h2>Quantisation and binary code</h2><p>Move an input between 0 and the reference voltage. The model rounds it down to the current quantisation interval.</p>
+<div class="demo-controls"><label>Input voltage (V)<input id="adc-input" type="range" min="0" max="5" step=".01" value="2.4"></label><output id="adc-input-label">2.40 V</output><label>Resolution (bits)<select id="adc-bits"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>8</option></select></label><label>Reference (V)<input id="adc-ref" type="number" min=".1" max="100" step=".1" value="5"></label></div>
+<div class="simulation-stage"><svg id="adc-svg" viewBox="0 0 700 250" role="img" aria-label="ADC staircase quantisation diagram"></svg></div><div id="adc-output" class="demo-output" aria-live="polite"></div>
+{% else %}
+<h2>Four-bit binary counter</h2><p>Advance one clock at a time and watch the binary state and decimal count change. This is a logical state model, not a pin-level IC simulator.</p>
+<div class="simulation-stage"><div id="counter-bits" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"></div></div><div id="counter-output" class="demo-output" aria-live="polite"></div><div class="demo-controls"><button id="counter-step" class="button primary" type="button">Clock +1</button><button id="counter-reset" class="button secondary" type="button">Reset</button><button id="counter-run" class="button secondary" type="button">Run / pause</button></div>
+{% endif %}
+</section>
+<script defer src="{{ url_for('static', filename='js/demos.js') }}"></script>
+{% endblock %}

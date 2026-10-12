@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Syllabus | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">COURSE MAP</span><h1>Your LDICA <em>syllabus.</em></h1><p>Browse the five units from operational amplifiers through sequential logic and memories.</p></section>
+<div class="syllabus-list">
+{% for unit in units %}
+<section class="syllabus-unit">
+  <div class="syllabus-unit-head"><span class="unit-number">0{{ unit.number }}</span><div><h2>{{ unit.title }}</h2><p>{{ unit.description }}</p></div><a class="button secondary small" href="{{ url_for('learning.list_topics', unit=unit.number) }}">Study unit →</a></div>
+  <div class="syllabus-topics">
+  {% for topic in unit.topics %}
+    <a href="{{ url_for('learning.lesson', slug=topic.slug) }}"><span>{{ "%02d"|format(loop.index) }}</span>{{ topic.title }}<b>↗</b></a>
+  {% endfor %}
+  </div>
+</section>
+{% endfor %}
+</div>
+{% endblock %}

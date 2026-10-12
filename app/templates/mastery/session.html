@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Mastery Session | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">{% if revision_mode|default(false) %}PHASE 5 · SPACED REVISION{% else %}FOCUSED PRACTICE{% endif %}</span><h1>{% if revision_mode|default(false) %}Revision <em>session.</em>{% else %}Mastery <em>session.</em>{% endif %}</h1><p>Choose the best answer for each question. Unanswered questions are recorded as skipped and will still receive a review recommendation.</p></section>
+<form method="post" action="{{ url_for('mastery.submit') }}" class="quiz-form mastery-session"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% for question in questions %}{% set question_index = loop.index0 %}<fieldset class="question-card"><legend><span>QUESTION {{ loop.index }} · UNIT {{ question.unit }}</span><h2>{{ question.q }}</h2></legend><div class="answer-options">{% for choice in question.choices %}<label><input type="radio" name="q{{ question_index }}" value="{{ loop.index0 }}"><span>{{ choice }}</span></label>{% endfor %}</div><small>Concept: {{ question.title }}</small></fieldset>{% endfor %}<button class="button primary" type="submit">Submit and update mastery →</button></form>
+{% endblock %}

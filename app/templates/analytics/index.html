@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Learning Analytics · LDICA{% endblock %}
+{% block content %}
+<section class="page-heading">
+  <p class="eyebrow">PHASE 14 · LEARNING INTELLIGENCE</p>
+  <h1>Learning analytics</h1>
+  <p>Understand your recorded practice, unit-level performance and revision workload. Empty data means no evidence has been recorded yet—not a zero ability score.</p>
+  <a class="button button-primary" href="{{ url_for('analytics.export_csv') }}">Export analytics CSV</a>
+</section>
+<section class="analytics-metrics" aria-label="Learning summary">
+  <article class="analytics-metric"><span>Practice attempts</span><strong>{{ data.attempts }}</strong><small>Recorded concept answers</small></article>
+  <article class="analytics-metric"><span>Overall accuracy</span><strong>{{ data.accuracy }}%</strong><small>Across recorded attempts</small></article>
+  <article class="analytics-metric"><span>Average mastery</span><strong>{{ data.avg_mastery }}%</strong><small>Tracked concepts only</small></article>
+  <article class="analytics-metric"><span>Reviews due</span><strong>{{ data.due_reviews }}</strong><small>Spaced-recall cards due now</small></article>
+</section>
+<section class="analytics-panel">
+  <div class="section-heading"><div><p class="eyebrow">LAST FOUR WEEKS</p><h2>Practice and accuracy trend</h2></div></div>
+  <div class="analytics-weeks">
+  {% for week in data.weeks %}
+    <article class="analytics-week"><span>{{ week.label }}</span><div class="analytics-bar-track" aria-label="{{ week.attempts }} attempts"><div class="analytics-bar" style="height: {{ [week.attempts * 5, 4]|max }}px"></div></div><strong>{{ week.attempts }}</strong><small>{% if week.accuracy is not none %}{{ week.accuracy }}% accuracy{% else %}No attempts{% endif %}</small></article>
+  {% endfor %}
+  </div>
+  <p class="analytics-note">Bars represent recorded answer volume (scaled for display). Weekly accuracy is shown separately and is not inferred when there are no attempts.</p>
+</section>
+<section class="analytics-panel">
+  <div class="section-heading"><div><p class="eyebrow">UNIT COMPARISON</p><h2>Performance by unit</h2></div></div>
+  {% if data.units %}<div class="table-scroll"><table><thead><tr><th>Unit</th><th>Concepts tracked</th><th>Attempts</th><th>Accuracy</th><th>Average mastery</th></tr></thead><tbody>
+  {% for unit in data.units %}<tr><td>Unit {{ unit.unit }}</td><td>{{ unit.concepts }}</td><td>{{ unit.attempts }}</td><td><div class="analytics-progress"><span style="width: {{ unit.accuracy }}%"></span></div>{{ unit.accuracy }}%</td><td><div class="analytics-progress"><span style="width: {{ unit.mastery }}%"></span></div>{{ unit.mastery }}%</td></tr>{% endfor %}
+  </tbody></table></div>{% else %}<div class="empty-state"><h3>No unit performance yet</h3><p>Complete a mastery practice session to start building your personal analytics.</p><a href="{{ url_for('mastery.index') }}">Go to Mastery</a></div>{% endif %}
+</section>
+<section class="analytics-panel">
+  <div class="section-heading"><div><p class="eyebrow">CONCEPT REVIEW</p><h2>Concepts needing attention</h2></div><a href="{{ url_for('mastery.revision') }}">Open revision queue →</a></div>
+  {% if data.mastery %}<div class="analytics-concepts">{% for concept in data.mastery[:10] %}<article class="analytics-concept"><div><strong>{{ concept.concept_title }}</strong><small>Unit {{ concept.unit_number }} · {{ concept.attempts }} attempts · {{ concept.accuracy }}% accuracy</small></div><div class="concept-score"><strong>{{ concept.mastery_score|round|int }}%</strong><div class="analytics-progress"><span style="width: {{ [0, [concept.mastery_score, 100]|min]|max }}%"></span></div></div></article>{% endfor %}</div>{% else %}<div class="empty-state"><h3>Start with one practice session</h3><p>Analytics are based on your saved activity. This page does not invent a score when there is no evidence.</p><a href="{{ url_for('mastery.index') }}">Start practising</a></div>{% endif %}
+</section>
+{% if data.quiz_attempts %}<section class="analytics-panel"><h2>Recent quiz attempts</h2><div class="table-scroll"><table><thead><tr><th>Date</th><th>Unit</th><th>Score</th></tr></thead><tbody>{% for attempt in data.quiz_attempts %}<tr><td>{{ attempt.created_at.strftime('%d %b %Y') if attempt.created_at else '—' }}</td><td>Unit {{ attempt.unit_number }}</td><td>{{ attempt.score }} / {{ attempt.total }}</td></tr>{% endfor %}</tbody></table></div></section>{% endif %}
+{% endblock %}

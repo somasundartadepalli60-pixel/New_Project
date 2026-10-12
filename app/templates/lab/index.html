@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Virtual Electronics Lab · LDICA{% endblock %}
+{% block content %}
+<section class="page-intro lab-intro">
+  <span class="eyebrow"><span class="pulse"></span> LOCAL INTERACTIVE WORKBENCH</span>
+  <h1>Virtual electronics <em>lab.</em></h1>
+  <p>Explore LDICA concepts through transparent, parameter-driven teaching models. Change a value, inspect the result, diagnose a conceptual fault, and save your experiment locally.</p>
+  <div class="lab-trust-note"><strong>No external APIs.</strong> Calculations run in the local application. These models are for learning and are not a replacement for hardware measurement or SPICE simulation.</div>
+</section>
+<section class="lab-layout">
+  <aside class="lab-sidebar">
+    <div class="lab-side-title"><span>WORKBENCH</span><span class="lab-live-dot"></span></div>
+    <button class="lab-mode active" data-mode="opamp"><span>01</span><span><strong>Op-amp amplifier</strong><small>Gain · clipping · feedback</small></span></button>
+    <button class="lab-mode" data-mode="timer555"><span>02</span><span><strong>555 astable timer</strong><small>High/low time · frequency</small></span></button>
+    <button class="lab-mode" data-mode="adc"><span>03</span><span><strong>ADC quantisation</strong><small>Resolution · code · error</small></span></button>
+    <button class="lab-mode" data-mode="logic"><span>04</span><span><strong>Logic gate explorer</strong><small>Truth values · output</small></span></button>
+    <div class="lab-sidebar-tip"><strong>Experiment loop</strong><p>Predict → change one variable → simulate → explain the result. Record your observation before resetting.</p></div>
+  </aside>
+  <div class="lab-main">
+    <div class="lab-toolbar"><div><span class="eyebrow" id="lab-unit-label">UNIT 1 · OPERATIONAL AMPLIFIERS</span><h2 id="lab-title">Inverting amplifier</h2></div><button class="button secondary small" id="lab-reset" type="button">Reset values</button></div>
+    <div class="lab-workspace-grid">
+      <section class="lab-card lab-circuit-card">
+        <div class="lab-card-head"><div><h3>Conceptual circuit</h3><p>Illustrative topology, not a pin-level schematic</p></div><span class="lab-status" id="lab-status">READY</span></div>
+        <div class="lab-circuit-stage" id="lab-circuit-stage" aria-label="Conceptual circuit diagram">
+          <svg viewBox="0 0 640 330" role="img" aria-labelledby="circuit-title circuit-desc"><title id="circuit-title">Inverting amplifier conceptual diagram</title><desc id="circuit-desc">Input passes through Rin to the inverting input of an op-amp. Feedback resistor Rf connects output back to the inverting input.</desc>
+            <g fill="none" stroke="#458f9b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M45 110 H155"/><path d="M155 110 l12 -8 v16 z" fill="#458f9b"/><path d="M167 110 H245"/><path d="M245 110 V138"/><path d="M245 138 H278"/><path d="M278 138 L278 82 L390 150 L278 218 Z" fill="#eaf6f4"/><path d="M390 150 H540"/><path d="M480 150 V55 H245 V110"/><path d="M245 165 H278" stroke-dasharray="5 6"/><path d="M45 165 H245" stroke-dasharray="4 6" opacity=".3"/></g>
+            <g fill="#172536" font-family="Arial,sans-serif" font-size="15"><text x="45" y="92">Vin</text><text x="183" y="95">Rin</text><text x="300" y="130">−</text><text x="300" y="183">+</text><text x="423" y="43">Rf feedback</text><text x="545" y="155">Vout</text><text x="315" y="246">OP-AMP</text><text x="48" y="193" font-size="12" fill="#667487">Common reference</text></g>
+            <g fill="#e8f4fa" stroke="#9dc8d8"><rect x="160" y="75" width="52" height="28" rx="7"/><rect x="405" y="28" width="105" height="28" rx="7"/></g><g fill="#1c78b7" font-family="Arial,sans-serif" font-size="12" font-weight="700"><text x="171" y="93">Rin</text><text x="423" y="46">Rf</text></g>
+          </svg>
+        </div>
+        <div class="lab-model-note" id="lab-model-note">Model assumption: ideal inverting op-amp with output limited to the selected symmetric supply rails.</div>
+      </section>
+      <section class="lab-card lab-controls-card">
+        <div class="lab-card-head"><div><h3>Experiment controls</h3><p>Change values and run the model</p></div></div>
+        <form id="lab-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="lab-field-grid" id="lab-fields"></div>
+          <button class="button primary full" type="submit">Run simulation <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="lab-predict"><label for="lab-prediction">My prediction before running</label><textarea id="lab-prediction" rows="2" maxlength="500" placeholder="What do you expect to change, and why?"></textarea></div>
+      </section>
+    </div>
+    <section class="lab-card lab-builder-card">
+      <div class="lab-card-head"><div><h3>Circuit topology sketchpad</h3><p>Assemble a conceptual circuit, name electrical nets, and run structural checks.</p></div><span class="lab-status">DESIGN MODE</span></div>
+      <div class="lab-builder-toolbar"><div><label for="lab-topology">Starter topology</label><select id="lab-topology"><option value="inverting">Inverting op-amp</option><option value="timer555">555 astable timer</option><option value="logic">Two-input logic gate</option><option value="blank">Blank design</option></select></div><button type="button" class="button secondary small" id="lab-load-topology">Load starter</button></div>
+      <div class="lab-palette" aria-label="Component palette"><strong>Add component</strong><button type="button" data-add-component="source">+ Signal source</button><button type="button" data-add-component="resistor">+ Resistor</button><button type="button" data-add-component="capacitor">+ Capacitor</button><button type="button" data-add-component="opamp">+ Op-amp</button><button type="button" data-add-component="timer555">+ 555 timer</button><button type="button" data-add-component="logic">+ Logic gate</button><button type="button" data-add-component="ground">+ Ground</button><button type="button" data-add-component="output">+ Output probe</button></div>
+      <div id="lab-builder-list" class="lab-builder-list"><p class="muted">Load a starter topology or add components to begin.</p></div>
+      <div class="lab-builder-actions"><button type="button" class="button primary" id="lab-check-circuit">Validate topology</button><button type="button" class="button secondary" id="lab-save-circuit">Save design locally</button><button type="button" class="button secondary small" id="lab-clear-circuit">Clear</button></div>
+      <div id="lab-circuit-report" class="lab-circuit-report" aria-live="polite"><strong>Ready to inspect your design</strong><p>Use the same node name for terminals that are electrically connected. These checks validate topology only; they do not simulate arbitrary circuits.</p></div>
+    </section>
+    <section class="lab-card lab-results-card">
+      <div class="lab-card-head"><div><h3>Simulation results</h3><p>Calculated values and a plain-language interpretation</p></div><button type="button" class="button secondary small" id="lab-save">Save experiment</button></div>
+      <div class="lab-result-grid" id="lab-results"><div class="lab-empty"><span>↗</span><strong>Ready when you are</strong><p>Set your inputs and run the simulation to see calculated outputs here.</p></div></div>
+      <div class="lab-equation" id="lab-equation">Equations and assumptions will appear after simulation.</div>
+      <div class="lab-observation"><label for="lab-observation-text">Observation / conclusion</label><textarea id="lab-observation-text" rows="3" maxlength="1500" placeholder="Describe what changed, compare it with your prediction, and note any limitations."></textarea></div>
+    </section>
+    <section class="lab-card lab-diagnosis-card">
+      <div class="lab-card-head"><div><h3>Fault diagnosis challenge</h3><p>Practice reasoning from symptoms to likely causes</p></div><span class="lab-status">PRACTICE</span></div>
+      <div class="lab-diagnosis-grid"><div><label for="lab-fault">Select a simulated symptom</label><select id="lab-fault"><option value="clipping">Output is stuck near a supply rail</option><option value="zero">Output remains near zero</option><option value="no-oscillation">555 output does not oscillate</option><option value="wrong-code">ADC code seems too coarse</option><option value="unknown">Unexpected result after changing one value</option></select><button type="button" class="button secondary" id="lab-diagnose">Review likely causes</button></div><div class="lab-diagnosis-answer" id="lab-diagnosis-answer"><strong>Think like an engineer</strong><p>Choose a symptom, write down the evidence, then request a guided checklist.</p></div></div>
+    </section>
+    <section class="lab-card lab-history-card"><div class="lab-card-head"><div><h3>My local experiment notebook</h3><p>Saved in this browser only; it is not uploaded to a server.</p></div><button type="button" class="button secondary small" id="lab-export">Export notebook JSON</button></div><div id="lab-history" class="lab-history-list"><p class="muted">No experiments saved in this browser yet.</p></div></section>
+  </div>
+</section>
+<script defer src="{{ url_for('static', filename='js/lab.js') }}"></script>
+{% endblock %}

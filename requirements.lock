@@ -1,0 +1,13 @@
+# Top-level dependency constraints for reproducible environment setup.
+# Generate a fully pinned platform-specific lock with:
+#   pip freeze > requirements.lock
+# after installing requirements.txt in your target Python environment.
+Flask>=3.1,<4
+Flask-SQLAlchemy>=3.1,<4
+Flask-Migrate>=4.1,<5
+Flask-WTF>=1.2,<2
+Flask-Login>=0.6,<1
+email-validator>=2.2,<3
+python-dotenv>=1.0,<2
+
+pypdf>=5.0,<7

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Signal & Timing Workbench · LDICA{% endblock %}
+{% block content %}
+<section class="page-intro phase3-intro">
+  <span class="eyebrow"><span class="pulse"></span> PHASE 3 · SIGNAL ANALYSIS</span>
+  <h1>Signal & timing <em>workbench.</em></h1>
+  <p>Compare how LDICA circuit parameters affect waveforms, conversion steps and timing behavior. All calculations and plots run in your browser with no external API keys or plotting libraries.</p>
+  <div class="phase3-note"><strong>Model boundary:</strong> these are transparent teaching models, not SPICE simulation or device-specific PLL analysis. Review each model's assumptions before interpreting results.</div>
+</section>
+
+<section class="phase3-shell">
+  <div class="phase3-controls lab-card">
+    <div class="lab-card-head"><div><h2>Choose a model</h2><p>Select a topic, set its parameters, and run a comparison.</p></div><span class="lab-status">LOCAL</span></div>
+    <label class="phase3-label" for="p3-mode">Signal model</label>
+    <select id="p3-mode" class="phase3-select">
+      <option value="opamp">Op-amp transfer curve</option>
+      <option value="timer555">555 astable output</option>
+      <option value="adc">ADC staircase transfer</option>
+      <option value="pll">Simplified PLL lock response</option>
+      <option value="digital">Clocked D flip-flop timing</option>
+    </select>
+    <div id="p3-fields" class="phase3-fields"></div>
+    <div class="phase3-actions">
+      <button class="button primary" type="button" id="p3-run">Update plots</button>
+      <button class="button secondary" type="button" id="p3-reset">Reset model</button>
+    </div>
+    <div class="phase3-divider"></div>
+    <h3>Parameter sweep</h3>
+    <p class="phase3-help">Overlay several curves while changing one parameter. Other values stay fixed.</p>
+    <label class="phase3-label" for="p3-sweep">Parameter to compare</label>
+    <select id="p3-sweep" class="phase3-select"></select>
+    <div class="phase3-fields phase3-sweep-fields">
+      <label class="phase3-field"><span>Start</span><input id="p3-sweep-start" type="number" value="10000" step="any"></label>
+      <label class="phase3-field"><span>End</span><input id="p3-sweep-end" type="number" value="50000" step="any"></label>
+      <label class="phase3-field"><span>Curve count</span><select id="p3-sweep-count"><option>3</option><option selected>5</option><option>7</option></select></label>
+    </div>
+    <button class="button secondary full" type="button" id="p3-compare">Compare parameters</button>
+  </div>
+
+  <div class="phase3-main">
+    <section class="lab-card phase3-plot-card">
+      <div class="lab-card-head"><div><h2 id="p3-chart-title">Op-amp transfer curve</h2><p id="p3-chart-subtitle">Input voltage versus clipped output voltage</p></div><span class="lab-status" id="p3-status">READY</span></div>
+      <div class="phase3-chart-wrap"><canvas id="p3-chart" width="1000" height="480" role="img" aria-label="Interactive waveform plot"></canvas></div>
+      <div id="p3-legend" class="phase3-legend"></div>
+      <div id="p3-metrics" class="phase3-metrics" aria-live="polite"></div>
+    </section>
+    <section class="lab-card phase3-plot-card">
+      <div class="lab-card-head"><div><h2>Timing view</h2><p id="p3-timing-subtitle">Time-domain view of the selected model</p></div><span class="lab-status">TIME DOMAIN</span></div>
+      <div class="phase3-chart-wrap phase3-chart-short"><canvas id="p3-timing" width="1000" height="300" role="img" aria-label="Time-domain timing diagram"></canvas></div>
+      <p id="p3-assumptions" class="phase3-model-note">Choose a model to view its assumptions.</p>
+    </section>
+    <section class="lab-card phase3-sweep-card">
+      <div class="lab-card-head"><div><h2>Comparison results</h2><p>Numerical values behind the parameter sweep.</p></div><button type="button" class="button secondary small" id="p3-export">Export CSV</button></div>
+      <div class="phase3-table-wrap"><table class="phase3-table"><thead id="p3-table-head"><tr><th>Parameter</th><th>Result</th></tr></thead><tbody id="p3-table-body"><tr><td colspan="2">Run a parameter comparison to populate this table.</td></tr></tbody></table></div>
+      <p class="phase3-help">CSV export contains the current comparison rows only. No data is sent to a server.</p>
+    </section>
+  </div>
+</section>
+<script defer src="{{ url_for('static', filename='js/signal-workbench.js') }}"></script>
+{% endblock %}

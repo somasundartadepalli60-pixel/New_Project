@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}LDICA Calculators | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">FORMULA WORKBENCH</span><h1>Calculate it. <em>Understand it.</em></h1><p>Use these local calculators to check common LDICA relationships. They run inside this application and do not call external APIs.</p></section>
+<div class="calculator-layout">
+  <aside class="calculator-menu"><span class="eyebrow">AVAILABLE TOOLS</span>
+    {% for key, item in calculators.items() %}<a class="calculator-menu-item {% if selected == key %}active{% endif %}" href="{{ url_for('tools.index', calculator=key) }}"><span>{{ '%02d'|format(loop.index) }}</span><div><strong>{{ item.title }}</strong><small>{{ item.description }}</small></div><b>↗</b></a>{% endfor %}
+  </aside>
+  <section class="calculator-workspace"><span class="eyebrow">INTERACTIVE CALCULATOR</span><h2>{{ calculator.title }}</h2><p>{{ calculator.description }}</p>
+    <form method="post" class="calculator-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="calculator" value="{{ selected }}">
+      {% for field_name, label, default in calculator.fields %}<label for="calc-{{ field_name }}">{{ label }}<input id="calc-{{ field_name }}" name="{{ field_name }}" type="number" step="any" value="{{ values.get(field_name, default) }}" required></label>{% endfor %}
+      <button class="button primary" type="submit">Calculate result <span>→</span></button>
+    </form>
+    {% if error %}<div class="calculator-error" role="alert"><strong>Check the inputs</strong><p>{{ error }}</p></div>{% endif %}
+    {% if result %}<div class="calculator-result"><span class="eyebrow">RESULT</span><div class="calculator-result-grid">{% for label, value in result %}<div><small>{{ label }}</small><strong>{{ value }}</strong></div>{% endfor %}</div><p class="result-caveat">Idealised calculation only. Confirm the exact topology, units, reference convention and real IC limits from the relevant lesson or datasheet.</p></div>{% endif %}
+    <div class="calculator-note"><strong>How to use this well</strong><ol><li>Convert component values to the units shown in the input labels.</li><li>Calculate by hand first, then use this tool to check your result.</li><li>Record the equation, substituted values, units, and final answer in your notes.</li></ol></div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Mock Exam in Progress · LDICA{% endblock %}
+{% block content %}
+<section class="page-heading"><p class="eyebrow">TIMED ASSESSMENT</p><h1>Mock exam</h1><p>Choose one answer per question. The server checks the deadline when the form is submitted; the on-screen clock is a visual aid.</p><div class="exam-clock" id="exam-clock" data-seconds="{{ remaining }}">Loading timer…</div></section>
+<form method="post" action="{{ url_for('assessments.mock_submit') }}" id="mock-exam-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% for q in questions %}<fieldset class="panel exam-question"><legend>{{ loop.index }}. {{ q.title }}</legend><p>{{ q.q }}</p>{% for choice in q.choices %}<label class="exam-choice"><input type="radio" name="{{ q.key }}" value="{{ loop.index0 }}"> <span>{{ 'ABCD'[loop.index0] }}. {{ choice }}</span></label>{% endfor %}</fieldset>{% endfor %}<button class="button button-primary" type="submit">Submit answers</button></form>
+<script defer src="{{ url_for('static', filename='js/exam-timer.js') }}"></script>
+{% endblock %}

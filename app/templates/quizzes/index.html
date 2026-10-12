@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Practice | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">CHECK YOUR UNDERSTANDING</span><h1>Practice with <em>purpose.</em></h1><p>A short mixed-unit starter quiz. Each answer includes an explanation after submission.</p></section>
+<form method="post" action="{{ url_for('practice.submit') }}" class="quiz-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{% for question in questions %}<fieldset class="question-card"><legend><span>QUESTION {{ loop.index }}</span><h2>{{ question.q }}</h2></legend><div class="answer-options">{% for choice in question.choices %}<label><input type="radio" name="q{{ loop.index0 }}" value="{{ loop.index0 }}"><span>{{ choice }}</span></label>{% endfor %}</div><small>Unit {{ question.unit }}</small></fieldset>{% endfor %}
+<button class="button primary" type="submit">Submit answers →</button></form>
+{% endblock %}

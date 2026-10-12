@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}{{ topic.title }} | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{{ url_for('main.index') }}">Home</a><span>/</span><a href="{{ url_for('learning.list_topics', unit=topic.unit_number) }}">Unit {{ topic.unit_number }}</a><span>/</span><span>{{ topic.title }}</span></div>
+<div class="lesson-layout">
+<article class="lesson-main">
+  <span class="eyebrow">UNIT {{ "%02d"|format(topic.unit_number) }} · {{ topic.unit_title|upper }}</span>
+  <h1>{{ topic.title }}<em>.</em></h1>
+  <p class="lesson-summary">{{ topic.summary }}</p>
+  <div class="lesson-callout"><strong>In this lesson</strong><p>{{ topic.explanation }}</p></div>
+  <section class="lesson-section"><h2>Core idea</h2><p>{{ topic.explanation }}</p><p>When solving a problem, identify the circuit configuration, state the assumptions, write the governing relationship, substitute values with units, and check whether the result is physically reasonable.</p></section>
+  {% if topic.formula %}
+  <section class="lesson-section"><h2>Formula / relationship</h2><div class="formula-card"><span class="formula-label">REFERENCE</span><code>{{ topic.formula }}</code><p>Confirm the circuit topology, sign convention, and assumptions before using this relationship in a numerical problem.</p></div></section>
+  {% endif %}
+  <section class="lesson-section"><h2>Diagram and signal flow</h2><p>This lesson is tagged as <strong>{{ topic.diagram_type }}</strong>. The schematic below is a conceptual guide; it is not a pin-accurate circuit diagram.</p>
+    <div class="diagram-card">
+      {% if topic.slug in ['ic555-functional', 'ic555-monostable', 'ic555-astable'] %}
+      <svg viewBox="0 0 640 280" role="img" aria-label="Conceptual 555 timer functional blocks"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="30" y="36" width="135" height="55" rx="8"/><rect x="30" y="116" width="135" height="55" rx="8"/><rect x="220" y="70" width="130" height="70" rx="8"/><rect x="405" y="70" width="105" height="70" rx="8"/><rect x="535" y="70" width="85" height="70" rx="8"/><path d="M165 64 H195 V90 H220 M165 143 H195 V120 H220 M350 105 H405 M510 105 H535 M462 140 V205 H100 V171" stroke-dasharray="5 4"/><path d="M462 70 V34 H578 V70"/></g><g fill="currentColor" font-size="13" text-anchor="middle"><text x="97" y="59">Upper comparator</text><text x="97" y="76">2VCC/3 ref</text><text x="97" y="139">Lower comparator</text><text x="97" y="156">VCC/3 ref</text><text x="285" y="99">SR latch</text><text x="285" y="118">state control</text><text x="457" y="98">Output</text><text x="457" y="117">stage</text><text x="577" y="98">Output</text><text x="577" y="117">pin</text><text x="320" y="232">Discharge transistor controlled by latch state</text><text x="320" y="256">Conceptual only — consult the IC 555 pin-level diagram in the notes</text></g></svg>
+      {% elif topic.slug in ['ic565-pll', 'pll-principle', 'ic565-applications'] %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Phase locked loop feedback diagram"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="28" y="75" width="125" height="65" rx="8"/><rect x="205" y="75" width="125" height="65" rx="8"/><rect x="382" y="75" width="125" height="65" rx="8"/><path d="M153 107 H205 M330 107 H382 M507 107 H570 V185 H91 V140"/><path d="M195 101 L205 107 L195 113 M372 101 L382 107 L372 113 M560 178 L570 185 L560 192"/></g><g fill="currentColor" font-size="14" text-anchor="middle"><text x="90" y="101">Phase</text><text x="90" y="119">detector</text><text x="267" y="101">Loop filter</text><text x="267" y="119">/ amplifier</text><text x="444" y="101">Voltage-</text><text x="444" y="119">controlled osc.</text><text x="320" y="218">Feedback closes the loop; lock depends on loop range and dynamics</text></g></svg>
+      {% elif topic.slug in ['parallel-comparator-adc', 'counter-adc', 'sar-adc', 'dual-slope-adc'] %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Analogue to digital converter signal path"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="25" y="80" width="120" height="70" rx="8"/><rect x="195" y="80" width="120" height="70" rx="8"/><rect x="365" y="80" width="120" height="70" rx="8"/><rect x="535" y="80" width="80" height="70" rx="8"/><path d="M145 115 H195 M315 115 H365 M485 115 H535"/></g><g fill="currentColor" font-size="13" text-anchor="middle"><text x="85" y="109">Analogue</text><text x="85" y="127">input</text><text x="255" y="109">Compare /</text><text x="255" y="127">convert</text><text x="425" y="109">Control /</text><text x="425" y="127">encode</text><text x="575" y="109">Digital</text><text x="575" y="127">code</text><text x="320" y="195">Internal blocks differ by ADC architecture</text></g></svg>
+      {% elif topic.slug in ['weighted-resistor-dac', 'r2r-ladder-dac', 'inverted-r2r-dac'] %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Conceptual DAC bit weighting diagram"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M75 58 H180 V90 H245 V122 H310 V154 H375 V186 H440"/><path d="M180 58 V35 M245 90 V67 M310 122 V99 M375 154 V131"/><rect x="145" y="24" width="70" height="22" rx="4"/><rect x="210" y="56" width="70" height="22" rx="4"/><rect x="275" y="88" width="70" height="22" rx="4"/><rect x="340" y="120" width="70" height="22" rx="4"/><path d="M440 186 H535"/></g><g fill="currentColor" font-size="13" text-anchor="middle"><text x="180" y="39">MSB</text><text x="245" y="71">b2</text><text x="310" y="103">b1</text><text x="375" y="135">LSB</text><text x="560" y="179">Vout</text><text x="320" y="222">Conceptual bit weighting; use the supplied topology for exact resistor paths</text></g></svg>
+      {% elif topic.slug in ['rom-architecture', 'ram-architecture', 'static-ram', 'dynamic-ram'] %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Memory address decode and data path"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="35" y="82" width="115" height="70" rx="8"/><rect x="210" y="82" width="125" height="70" rx="8"/><rect x="395" y="82" width="105" height="70" rx="8"/><rect x="545" y="82" width="70" height="70" rx="8"/><path d="M150 117 H210 M335 117 H395 M500 117 H545"/></g><g fill="currentColor" font-size="13" text-anchor="middle"><text x="92" y="109">Address</text><text x="92" y="127">inputs</text><text x="272" y="109">Address</text><text x="272" y="127">decoder</text><text x="447" y="109">Memory</text><text x="447" y="127">array</text><text x="580" y="109">Data</text><text x="580" y="127">I/O</text><text x="320" y="194">Control signals select read/write operation where supported</text></g></svg>
+      {% elif topic.diagram_type == 'opamp' %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Conceptual op amp block diagram"><g stroke="currentColor" stroke-width="2" fill="none"><path d="M235 55 L235 195 L390 125 Z"/><path d="M100 90 H235 M100 160 H235 M390 125 H510"/><path d="M155 125 V210 H445 V145" stroke-dasharray="5 5"/><path d="M510 125 H555"/></g><g fill="currentColor" font-size="15"><text x="244" y="92">−</text><text x="244" y="164">+</text><text x="75" y="82">Input</text><text x="520" y="115">Output</text><text x="300" y="224">Feedback (configuration-dependent)</text><text x="275" y="35">OP-AMP</text></g></svg>
+      {% elif topic.diagram_type == 'filter' %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Conceptual filter block diagram"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M50 125 H150 M150 80 H490 V170 H150 Z M490 125 H590"/></g><g fill="currentColor" font-size="16" text-anchor="middle"><text x="95" y="108">Input</text><text x="320" y="116">Frequency</text><text x="320" y="139">selective network</text><text x="540" y="108">Output</text></g></svg>
+      {% elif topic.diagram_type == 'waveform' %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Illustrative waveform"><g stroke="currentColor" opacity=".3"><path d="M50 40 V205 H590 M50 80 H590 M50 125 H590 M50 170 H590"/></g><path d="M55 125 H100 V65 H180 V185 H260 V65 H340 V185 H420 V65 H500 V185 H580" fill="none" stroke="#2f91cf" stroke-width="3"/><text x="55" y="28" fill="currentColor" font-size="15">Illustrative timing waveform (not to scale)</text></svg>
+      {% elif topic.diagram_type == 'logic' %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Conceptual digital logic flow"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="65" y="80" width="130" height="85" rx="10"/><rect x="255" y="80" width="130" height="85" rx="10"/><rect x="445" y="80" width="130" height="85" rx="10"/><path d="M195 122 H255 M385 122 H445"/></g><g fill="currentColor" font-size="15" text-anchor="middle"><text x="130" y="116">Inputs</text><text x="130" y="137">/ states</text><text x="320" y="116">Logic</text><text x="320" y="137">function</text><text x="510" y="116">Outputs</text><text x="510" y="137">/ next state</text></g></svg>
+      {% elif topic.diagram_type == 'block' %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Conceptual system block diagram"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="35" y="85" width="145" height="75" rx="8"/><rect x="245" y="85" width="145" height="75" rx="8"/><rect x="455" y="85" width="145" height="75" rx="8"/><path d="M180 122 H245 M390 122 H455"/></g><g fill="currentColor" font-size="15" text-anchor="middle"><text x="107" y="117">Input</text><text x="107" y="138">/ reference</text><text x="317" y="117">Processing</text><text x="317" y="138">/ control</text><text x="527" y="117">Output</text><text x="527" y="138">/ result</text></g></svg>
+      {% else %}
+      <svg viewBox="0 0 640 250" role="img" aria-label="Conceptual learning diagram"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="60" y="80" width="150" height="90" rx="10"/><rect x="245" y="80" width="150" height="90" rx="10"/><rect x="430" y="80" width="150" height="90" rx="10"/><path d="M210 125 H245 M395 125 H430"/></g><g fill="currentColor" font-size="15" text-anchor="middle"><text x="135" y="118">Concept</text><text x="135" y="140">Input</text><text x="320" y="118">Principle</text><text x="320" y="140">Operation</text><text x="505" y="118">Result</text><text x="505" y="140">Application</text></g></svg>
+      {% endif %}
+      <p class="diagram-caption">Conceptual illustration. Use the source notes for exact circuit topology, pin numbers, and component values.</p>
+    </div>
+  </section>
+  <section class="lesson-section"><h2>{{ detail.worked_title }}</h2>
+    <div class="worked-example"><span class="formula-label">WORKED EXAMPLE</span><p>{{ detail.example }}</p>
+      <ol>{% for step in detail.worked_steps %}<li>{{ step }}</li>{% endfor %}</ol>
+    </div>
+  </section>
+  <section class="lesson-section"><h2>Quick understanding check</h2>
+    <div class="knowledge-check"><p><strong>{{ detail.check }}</strong></p>
+      <details><summary>Show answer and explanation</summary><p>{{ detail.answer }}</p></details>
+    </div>
+  </section>
+  <section class="lesson-section"><h2>Common mistakes to avoid</h2><ul class="check-list">{% for pitfall in detail.pitfalls %}<li>{{ pitfall }}</li>{% endfor %}</ul></section>
+  
+<section class="lesson-section"><h2>Study this topic deeply</h2>
+<div class="lesson-depth-grid">
+<div class="lesson-depth-card"><h3>1. Explain it simply</h3><p>{{ topic.explanation }}</p><p>First identify what the circuit or digital block receives, what internal rule it applies, and what output it produces. Then describe why that behaviour is useful.</p></div>
+<div class="lesson-depth-card"><h3>2. Work through the reasoning</h3><ul>{% for step in detail.worked_steps %}<li>{{ step }}</li>{% endfor %}</ul></div>
+<div class="lesson-depth-card"><h3>3. Worked example / sanity check</h3><p>{{ detail.example }}</p><p>Check units, polarity, assumed operating region, and whether the result fits real component limits.</p></div>
+<div class="lesson-depth-card"><h3>4. Common mistakes</h3><ul>{% for pitfall in detail.pitfalls %}<li>{{ pitfall }}</li>{% endfor %}</ul></div>
+</div>
+<div class="lesson-depth-card" style="margin-top:12px"><h3>5. Recall check</h3><p>{{ detail.check }}</p><details><summary>Reveal suggested answer</summary><p>{{ detail.answer }}</p></details><a class="lesson-media-link" href="{{ url_for('tutor.index', topic=topic.slug) }}">Ask the study tutor about this topic →</a><a class="lesson-media-link" href="{{ url_for('media.index') }}">Open diagrams and source notes →</a></div>
+</section>
+
+<section class="lesson-section"><h2>Applications and connections</h2><ul class="check-list">{% for application in topic.applications %}<li>{{ application }}</li>{% else %}<li>Connect this topic to the circuit's intended function, operating limits, and the relevant applications described in your unit notes.</li>{% endfor %}</ul></section>
+  <section class="lesson-section"><h2>Study checklist</h2><ul class="check-list"><li>Can you define the concept in your own words?</li><li>Can you explain the working principle step by step?</li><li>Can you identify the important equation or truth table?</li><li>Can you solve a representative exam problem?</li><li>Can you explain the limitations and practical uses?</li></ul></section>
+  <div class="source-note"><strong>Source note</strong><p>{{ topic.source_note }}</p><p>This initial build provides a structured overview, not a replacement for checking the complete derivation and original diagram in your uploaded unit PDF.</p></div>
+  <div class="lesson-pagination">{% if previous_topic %}<a class="button secondary" href="{{ url_for('learning.lesson', slug=previous_topic.slug) }}">← {{ previous_topic.title }}</a>{% else %}<span></span>{% endif %}{% if next_topic %}<a class="button primary" href="{{ url_for('learning.lesson', slug=next_topic.slug) }}">Next topic →</a>{% endif %}</div>
+</article>
+<aside class="lesson-sidebar">
+  <div class="sidebar-card"><span class="eyebrow">YOUR PROGRESS</span><h3>Keep moving forward.</h3>
+    {% if current_user.is_authenticated %}
+    <form method="post" action="{{ url_for('learning.update_progress', slug=topic.slug) }}" class="stack-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label for="status">Topic status</label><select id="status" name="status"><option value="not_started" {% if status=='not_started' %}selected{% endif %}>Not started</option><option value="in_progress" {% if status=='in_progress' %}selected{% endif %}>In progress</option><option value="completed" {% if status=='completed' %}selected{% endif %}>Completed</option></select>
+      <button class="button primary full" type="submit">Save progress</button>
+    </form>
+    <form method="post" action="{{ url_for('learning.toggle_bookmark', slug=topic.slug) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button secondary full" type="submit">{{ 'Remove bookmark' if bookmarked else '☆ Bookmark topic' }}</button></form>
+    {% else %}<p>Log in to save your progress, bookmarks, and notes.</p><a class="button primary full" href="{{ url_for('auth.login') }}">Log in to track</a>{% endif %}
+  </div>
+  {% if current_user.is_authenticated %}
+  <div class="sidebar-card"><span class="eyebrow">PERSONAL NOTES</span><form method="post" action="{{ url_for('learning.save_note', slug=topic.slug) }}" class="stack-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label for="note">Your notes</label><textarea id="note" name="body" rows="6" maxlength="10000" placeholder="Write your own summary or questions...">{{ note }}</textarea><button class="button secondary full" type="submit">Save notes</button></form></div>
+  {% endif %}
+  <div class="sidebar-card related-card"><span class="eyebrow">UNIT {{ topic.unit_number }}</span><h3>{{ topic.unit_title }}</h3><a href="{{ url_for('learning.list_topics', unit=topic.unit_number) }}">Browse all unit topics →</a></div>
+</aside>
+</div>
+{% endblock %}

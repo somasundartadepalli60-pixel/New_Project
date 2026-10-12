@@ -1,0 +1,1078 @@
+
+
+===== PAGE 1 =====
+
+81 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+UNIT-IV 
+DIGITAL INTEGRATED CIRCUITS 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 2 =====
+
+82 
+ 
+Classification of Integrated Circuits 
+ 
+
+
+===== PAGE 3 =====
+
+83 
+ 
+ 
+
+
+===== PAGE 4 =====
+
+84 
+ 
+ 
+ 
+
+
+===== PAGE 5 =====
+
+85 
+ 
+Combinational Logic ICs – Specifications and Applications of TTL-74XX & CMOS 
+40XX Series ICs 
+ 
+7400 Series TTL: The 7400 series TTL logic integrated circuits provided the basis for most of 
+the logic circuits of the time and they are still available today. 
+The 7400 series of TTL logic integrated circuits was introduced in October 1966. The 7400 
+series logic TTL chips spawned a series of other derivative logic families offering slightly 
+different characteristics: high speed, low power, etc. However the standard parameters remained 
+the same: logic function ( a 7416 and a 74LS16 had the same function; they were pin compatible, 
+etc. 
+The 7400 series TTL chips remained in use for many years. They have long been superseded by 
+other 74xx00 logic families, but they have been so successful that the basic concept has remained 
+the same. 
+7400 series main features 
+Some of the main or highlight features and specifications for the 7400 series logic family are 
+detailed below: 
+Summary of 7400 Series TTL Key Parameters 
+Parameter 
+Specification 
+Supply voltage  
+          Nominal 5V (4.75 - 5.25) 
+Max toggle speed  
+           25 MHz  
+Propagation delay per gate         Typically 10 ns  
+Power consumption per gate            10 mW  
+7400 series output stages 
+There are three types of output stage that 7400 series logic may possess. 
+• 
+Totem pole:   This output is the standard output format for 7400 series logic chips. It comprises 
+two transistors and enables very fast switching times to be achieved.  
+ The advantages of using the totem-pole output are threefold: 
+• 
+Low power consumption  
+• 
+Fast switching  
+• 
+Low output impedance  
+
+
+===== PAGE 6 =====
+
+86 
+ 
+The 4000 series is a range of CMOS ICs introduced as a lower-power and more versatile 
+alternative to the 7400 series in common use. There are many ICs in the 4000 series, from 
+simple logic gates to counters and many more. 
+General characteristics of 4000 series CMOS ICs 
+• 
+Supply: 3 to 15V, small fluctuations are tolerated. 
+• 
+Inputs have very high impedance (resistance), this is good because it means they will not affect 
+the part of the circuit where they are connected. However, it also means that unconnected 
+inputs can easily pick up electrical noise and rapidly change between high and low states in an 
+unpredictable way. This is likely to make the IC behave erratically and it will significantly 
+increase the supply current. To prevent problems all unused inputs MUST be connected to the 
+supply (either +Vs or 0V), this applies even if that part of the IC is not being used in the circuit! 
+• 
+Outputs can sink and source only about 1mA if you wish to maintain the correct output voltage 
+to drive CMOS inputs. If there is no need to drive any inputs the maximum current is about 5mA 
+with a 6V supply, or 10mA with a 9V supply (just enough to light an LED). To switch larger 
+currents you can connect a transistor. 
+• 
+Fan-out: one output can drive up to 50 inputs. 
+• 
+Gate propagation time: typically 30ns for a signal to travel through a gate with a 9V supply, it 
+takes a longer time at lower supply voltages. 
+• 
+Frequency: up to 1MHz, above that the 74 series is a better choice. 
+• 
+Power consumption (of the IC itself) is very low, a few µW. It is much greater at high 
+frequencies, a few mW at 1MHz for example. 
+Quad 2-input gates 
+• 
+4001 quad 2-input NOR  
+• 
+4011 quad 2-input NAND  
+• 
+4030 quad 2-input EX-OR (now obsolete)  
+• 
+4070 quad 2-input EX-OR  
+• 
+4071 quad 2-input OR  
+• 
+4077 quad 2-input EX-NOR  
+• 
+4081 quad 2-input AND  
+• 
+4093 quad 2-input NAND with Schmitt trigger inputs  
+The 4093 has Schmitt trigger inputs to provide good noise immunity. They are ideal for slowly 
+changing or noisy signals. The hysteresis is about 0.5V with a 4.5V supply and almost 2V with a 
+9V supply. 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 7 =====
+
+87 
+ 
+Code Converters: 
+ 
+ 
+
+
+===== PAGE 8 =====
+
+88 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 9 =====
+
+89 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 10 =====
+
+90 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 11 =====
+
+91 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 12 =====
+
+92 
+ 
+Decoders & Encoders 
+ 
+
+
+===== PAGE 13 =====
+
+93 
+ 
+ 
+
+
+===== PAGE 14 =====
+
+94 
+ 
+ 
+
+
+===== PAGE 15 =====
+
+95 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 16 =====
+
+96 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 17 =====
+
+97 
+ 
+ 
+Priority Encoder: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 18 =====
+
+98 
+ 
+Multiplexers: 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 19 =====
+
+99 
+ 
+ 
+
+
+===== PAGE 20 =====
+
+100 
+ 
+ 
+
+
+===== PAGE 21 =====
+
+101 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 22 =====
+
+102 
+ 
+Parity Generators/Checkers: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 23 =====
+
+103 
+ 
+ 
+Parallel Binary Adder/ Subtractor 
+A parallel adder is an arithmetic combinational logic circuit that is used to add more than one bit 
+of data simultaneously. A full adder adds two bits and a carry to give an output. However, to add 
+more than one bit of data in length a parallel adder is used. A parallel adder adds 
+corresponding bits simultaneously using full adders and keeps generating a carry and pushing it 
+towards the next most significant bit to be added. An n-bit parallel adder uses n full adders 
+connected in cascade with each full adder adding the two corresponding bits of both the 
+numbers. 
+For example, for a binary number D3D2D1D0 and B3B2B1B0, a full adder connected in cascade 
+would add D0 and B0 and send the result to be displayed (LSB). If a carry is generated, it will be 
+passed on to the input of the next full adder. 
+How to design a 4-bit parallel adder? 
+To add two Hex codes we need four full adders connected in cascade. This is because a hex code 
+can be represented by four binary bits. The four full adders will connect to each other via their 
+CARRY outputs. And depending on the position of the bits the full adders add, the SUM outputs 
+of the full adders will be connected to the display. The least significant bit will be connected to 
+the LSB of the display. The most significant bit will be connected to the pin one bit before the 
+MSB of the display. The carry output of the final full adder will be connected to the MSB pin of 
+the display. 
+We can use two hex 4×4 keypads to generate the input bits or we can just add the bits manually. 
+If you want a circuit diagram without the hex keypads as inputs let us know in the comments. 
+Each row of the keypad is connected to a full adder depending on its significance. The first full 
+adder receives inputs from the first row of the hex keypad, the second receives inputs from the 
+second row of the hex keypad and the carry from the first and so on. The resultant combinational 
+logic circuit is shown below. 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 24 =====
+
+104 
+ 
+How to design a 4-bit parallel subtractor? 
+A 4-bit parallel subtractor is used to subtract a number consisting of 4 bits. This is done by 
+cascading a series of full subtractors. For an n-bit parallel subtractor, n full subtractors can be 
+cascaded to achieve the desired output. The connections are exactly the same as that of the 4-bit 
+parallel adder which we saw earlier in this post. Each of the bit is subtracted from its 
+corresponding bit of equal significance from the other number. A borrow if generated, 
+propagates through the cascade of full subtractors. 
+We use the same 4×4 hex keypads to input data in a full subtractor. The first rows (having the 
+least significance compared to the other rows) of the hex keypads are connected to the first full 
+subtractor. The second rows to the second full subtractor’s inputs along with the borrow from the 
+first full subtractor and so on. The output of each full adder is connected to the display on the 
+basis of their positional significance in the answer.  i.e the output of the first full subtractor is 
+connected to the LSB of the display. The final borrow output of the final full subtractor is 
+connected to the MSB pin of the display 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 25 =====
+
+105 
+ 
+Magnitude Comparators: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 26 =====
+
+106 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 27 =====
+
+107 
+ 
+ 
+ 
+ 
+ 
+UNIT-V 
+SEQUENTIAL LOGIC IC'S AND 
+MEMORIES 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 28 =====
+
+108 
+ 
+All Types of Flip-flops: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 29 =====
+
+109 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 30 =====
+
+110 
+ 
+ 
+
+
+===== PAGE 31 =====
+
+111 
+ 
+ 
+
+
+===== PAGE 32 =====
+
+112 
+ 
+ 
+
+
+===== PAGE 33 =====
+
+113 
+ 
+ 
+
+
+===== PAGE 34 =====
+
+114 
+ 
+Conversion of Flip flops 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 35 =====
+
+115 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 36 =====
+
+116 
+ 
+ 
+
+
+===== PAGE 37 =====
+
+117 
+ 
+ 
+
+
+===== PAGE 38 =====
+
+118 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 39 =====
+
+119 
+ 
+Synchronous Counters 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 40 =====
+
+120 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 41 =====
+
+121 
+ 
+Decade Counters 
+A binary coded decimal (BCD) is a serial digital counter that counts ten digits .And it resets for 
+every new clock input. As it can go through 10 unique combinations of output, it is also called as 
+“Decade counter”. A BCD counter can count 0000, 0001, 0010, 1000, 1001, 1010, 1011, 1110, 
+1111, 0000, and 0001 and so on. 
+A 4 bit binary counter will act as decade counter by skipping any six outputs out of the 16 (24) 
+outputs. There are some available ICs for decade counters which we can readily use in our 
+circuit, like 74LS90. It is an asynchronous decade counter. 
+ 
+The above figure shows a decade counter constructed with JK flip flop. The J output and K 
+outputs are connected to logic 1. The clock input of every flip flop is connected to the output of 
+next flip flop, except the last one. 
+The output of the NAND gate is connected in parallel to the clear input ‘CLR’ to all the flip 
+flops. This ripple counter can count up to 16 i.e. 24. 
+State Diagram of Decade Counter 
+The state diagram of Decade counter is given below. State diagram of Decade counter 
+ 
+ 
+
+
+===== PAGE 42 =====
+
+122 
+ 
+Shift Registers 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 43 =====
+
+123 
+ 
+ 
+
+
+===== PAGE 44 =====
+
+124 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 45 =====
+
+125 
+ 
+ 
+
+
+===== PAGE 46 =====
+
+126 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 47 =====
+
+127 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 48 =====
+
+128 
+ 
+MEMORIES - ROM Architecture, Types of ROMS & Applications 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 49 =====
+
+129 
+ 
+ 
+ 
+
+
+===== PAGE 50 =====
+
+130 
+ 
+ 
+Types of ROM: 
+Although all ROM basically serves the same purpose, there are a few different types 
+commonly in use today. 
+Understanding the different types of ROMs will also help you understand how they’re 
+used for different applications, and which type may apply to your application. 
+Some of them are: 
+1. PROM (Programmable ROM) 
+2. EPROM (Erasable Programmable ROM) 
+3. EEPROM (electrically erasable programmable ROM) 
+4. Flash EPROM 
+5. Mask ROM 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1. PROM (programmable ROM) and OTP 
+PROM refers to the kind of ROM that the user can burn information into. In other 
+words, PROM is a user-programmable memory.  
+For every bit of the PROM, there exists a fuse. PROM is programmed by blowing the 
+fuses. If the information burned into PROM is wrong, that PROM must be discarded 
+since its internal fuses are blown permanently. For this reason, PROM is also referred to 
+as OTP (One Time Programmable). 
+Programming ROM, also called burning ROM, requires special equipment called a ROM 
+burner or ROM programmer. 
+2. EPROM (erasable programmable ROM) and UV-EPROM 
+
+
+===== PAGE 51 =====
+
+131 
+ 
+EPROM was invented to allow making changes in the contents of PROM after it is 
+burned.  
+In EPROM, one can program the memory chip and erase it thousands of times. This is 
+especially necessary during the development of the prototype of a microprocessor-based 
+project.  
+A widely used EPROM is called UV-EPROM, where UV stands for ultraviolet. The only 
+problem with UV-EPROM is that erasing its contents can take up to 20 minutes.  
+All UV-EPROM chips have a window through which the programmer can shine 
+ultraviolet (UV) radiation to erase the chip’s contents. For this reason, EPROM is also 
+referred to as UV-erasable EPROM or simply UV-EPROM.  
+Programming a UV-EPROM 
+To program a UV-EPROM chip, the following steps must be taken: 
+1. Its contents must be erased. To erase a chip, remove it from its socket on the system 
+board and place it in EPROM erasure equipment to expose it to UV radiation for 5—20 
+minutes. 
+2. Program the chip. To program a UV-EPROM chip, place it in the ROM burner 
+(programmer). To burn code or data into EPROM, the ROM burner uses 12.5 volts or 
+higher, depending on the EPROM type. This voltage is referred to as Vpp in the UV-
+EPROM data sheet.  
+3. Place the chip back into its socket on the system board. 
+As can be seen from the above steps, not only is there an EPROM programmer (burner), 
+but there is also separate EPROM erasure equipment.  
+The main problem, and indeed the major disadvantage of UV-EPROM, is that it cannot 
+be erased and programmed while it is in the system board. To provide a solution to this 
+problem, EEPROM was invented. ’ 
+3. EEPROM (electrically erasable programmable ROM) 
+EEPROM has several advantages over EPROM, such as the fact that its method of 
+erasure is electrical and therefore instant. as opposed to the 20-minute erasure time 
+required for UV-EPROM.  
+In addition, in EEPROM one can select which byte to be erased, in contrast to UV-
+EPROM, in which the entire contents of ROM are erased.  
+However, the main advantage of EEPROM is that one can program and erase its 
+contents while it is still in the system board. it does not require physical removal of the 
+
+
+===== PAGE 52 =====
+
+132 
+ 
+memory chip from its socket. In other words, unlike UV-EPROM, EEPROM does not 
+require an external erasure and programming device. 
+To utilize EEPROM fully, the designer must incorporate the circuitry to program the 
+EEPROM into the system board. In general, the cost per bit for EEPROM is much 
+higher than for UV-EPROM. 
+4. Flash memory EPROM 
+Since the early 1990s, Flash EPROM has become a popular user-programmable memory 
+chip. and for good reasons.  
+1. First, the erasure of the entire contents takes less than a second, or one might say in a 
+flash, hence its name, Flash memory.  
+2. In addition, the erasure method is electrical, and for this reason, it is sometimes referred 
+to as Flash EEPROM. To avoid confusion, it is commonly called Flash memory.  
+The major difference between EEPROM and Flash memory is that when Flash 
+memory’s contents are erased, the entire device is erased, in contrast to EEPROM, 
+where one can erase a desired byte.  
+Although in many Flash memories recently made available the contents are divided into 
+blocks and the erasure can be done block by block, unlike EEPROM, Flash memory has 
+no byte erasure option. 
+Because Flash memory can be programmed while it is in its socket on the system board, 
+it is widely used to upgrade the BIOS ROM of the PC. Some designers believe that Flash 
+memory will replace the hard disk as a mass storage medium. 
+This would increase the performance of the computer tremendously since Flash memory 
+is semiconductor memory with access time in the range of 100 ns compared with disk 
+access time in the range of tens of milliseconds. For this to happen, Flash memory’s 
+program/erase cycles must become inﬁnite, just like hard disks.  
+Program/erase cycle refers to the number of times that a chip can be erased and 
+reprogrammed before it becomes unusable. At this time, the program/erase cycle is 
+100,000 for Flash and EEPROM, 1000 for UV-EPROM, and inﬁnite for RAM and disks.  
+5. Mask ROM 
+Mask ROM refers to a kind of ROM in which the contents are programmed by the IC 
+manufacturer. In other words, it is not a user-programmable ROM.  
+The term mask is used in IC fabrication. Since the process is costly, mask ROM is used when the 
+needed volume is high (hundreds of thousands) and it is absolutely certain that the contents will 
+not change.  
+
+
+===== PAGE 53 =====
+
+133 
+ 
+It is common practice to use UV-EPROM or Flash for the development phase of a 
+project, and only aﬁer the code/data have been ﬁnalized is the mask version of the 
+product ordered.  
+The main advantage of mask ROM is its cost, since it is signiﬁcantly cheaper than other kinds of 
+ROM, but if an error is found in the data/code, the entire batch must be thrown away. It must be 
+noted that all ROM memories have 8 bits for data pins; therefore, the organization is x8. 
+Applications of Mask Read Only Memory (MROM) 
+The Mask Read-Only Memory (MROM) are used for: 
+• 
+Network Operating Systems. 
+• 
+Server Operating Systems. 
+• 
+Storing fonts for laser printers. 
+• 
+Storing sound data in electronic musical instruments. 
+Applications of Programmable Read Only Memory (PROM) 
+The Programmable ROM (PROM) are used in: 
+• 
+Mobile Phones for providing User Specific Selections. 
+• 
+Video game consoles 
+• 
+Implantable Medical devices. 
+• 
+Radio-Frequency Identification (RFID)tags. 
+• 
+High definition Multimedia Interfaces(HDMI) 
+Applications of Erasable Programmable Read Only Memory (EPROM) 
+The applications of Erasable Programmable ROM (EPROM) includes: 
+• 
+As program storage chip in Micro controllers. 
+• 
+For debugging. 
+• 
+For program development. 
+• 
+As BIOS chip in computers. 
+• 
+As program storage chip in modem, video card and many electronic gadgets. 
+Applications of Electrically Erasable Programmable Read Only Memory 
+(EEPROM) 
+The applications of Electrically Erasable Programmable ROM (EPROM) includes: 
+• 
+As BIOS chip in computers 
+• 
+As storage for re-programmable calibration information in test-equipment. 
+
+
+===== PAGE 54 =====
+
+134 
+ 
+• 
+As storage for in-built self learning functionality in remote operated transmitters. 
+Applications of Flash Read Only Memory (Flash ROM) 
+The applications of Flash Read-Only Memory (Flash ROM) are: 
+• 
+The latest technology computers use BIOS stored on a flash memory chip, called as flash BIOS. 
+• 
+Modems, pen drives, small cards use flash ROM. 
+ 
+RAM Architecture: 
+RAM(Random Access Memory) is a part of computer’s Main Memory which is directly 
+accessible by CPU. RAM is used to Read and Write data into it which is accessed by CPU 
+randomly. RAM is volatile in nature, it means if the power goes off, the stored information is 
+lost. RAM is used to store the data that is currently processed by the CPU. Most of the programs 
+and data that are modifiable are stored in RAM.  
+Integrated RAM chips are available in two form: 
+1. SRAM(Static RAM) 
+2. DRAM(Dynamic RAM) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+SRAM Memory Cell: Static memories(SRAM) are memories that consist of circuits capable of 
+retaining their state as long as power is on. Thus this type of memories is called volatile 
+memories. The below figure shows a cell diagram of SRAM. A latch is formed by two inverters 
+connected as shown in the figure. Two transistors T1 and T2 are used for connecting the latch 
+with two bit lines. The purpose of these transistors is to act as switches that can be opened or 
+closed under the control of the word line, which is controlled by the address decoder. When the 
+word line is at 0-level, the transistors are turned off and the latch remains its information. For 
+
+
+===== PAGE 55 =====
+
+135 
+ 
+example, the cell is at state 1 if the logic value at point A is 1 and at point B is 0. This state is 
+retained as long as the word line is not activated. 
+ 
+For Read operation, the word line is activated by the address input to the address decoder. The 
+activated word line closes both the transistors (switches) T1 and T2. Then the bit values at points 
+A and B can transmit to their respective bit lines. The sense/write circuit at the end of the bit 
+lines sends the output to the processor. 
+For Write operation, the address provided to the decoder activates the word line to close both 
+the switches. Then the bit value that to be written into the cell is provided through the sense/write 
+circuit and the signals in bit lines are then stored in the cell. 
+DRAM Memory Cell: Though SRAM is very fast, but it is expensive because of its every cell 
+requires several transistors. Relatively less expensive RAM is DRAM, due to the use of one 
+transistor and one capacitor in each cell, as shown in the below figure., where C is the capacitor 
+and T is the transistor. Information is stored in a DRAM cell in the form of a charge on a 
+capacitor 
+and 
+this 
+charge 
+needs 
+to 
+be 
+periodically 
+recharged. 
+For storing information in this cell, transistor T is turned on and an appropriate voltage is applied 
+to the bit line. This causes a known amount of charge to be stored in the capacitor. After the 
+transistor is turned off, due to the property of the capacitor, it starts to discharge. Hence, the 
+information stored in the cell can be read correctly only if it is read before the charge on the 
+capacitors drops below some threshold value. 
+ 
+
+
+===== PAGE 56 =====
+
+136 
+ 
+ 
+ 
+ 
+Difference between SRAM and DRAM 
+Below table lists some of the differences between SRAM and DRAM: 
+ 

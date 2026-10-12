@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Lessons | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">LESSON LIBRARY</span><h1>Find your next <em>concept.</em></h1><p>Search across the LDICA syllabus or filter by unit.</p></section>
+<form class="search-panel" method="get">
+  <label class="search-field"><span>⌕</span><input name="q" value="{{ query }}" placeholder="Search op-amps, filters, ADCs, flip-flops..." aria-label="Search lessons"></label>
+  <select name="unit" aria-label="Filter by unit"><option value="">All units</option>{% for n in range(1,6) %}<option value="{{ n }}" {% if unit==n %}selected{% endif %}>Unit {{ n }}</option>{% endfor %}</select>
+  <button class="button primary" type="submit">Search</button>
+</form>
+<div class="results-label"><span>{{ topics|length }} topics found</span><span>Choose a topic to open its lesson</span></div>
+<div class="lesson-list">
+{% for topic in topics %}
+<a class="lesson-row" href="{{ url_for('learning.lesson', slug=topic.slug) }}">
+  <span class="lesson-unit">U{{ topic.unit_number }}</span><div class="lesson-row-copy"><h3>{{ topic.title }}</h3><p>{{ topic.summary }}</p></div>
+  <span class="lesson-status">{% if statuses.get(topic.id) == 'completed' %}✓ Completed{% elif statuses.get(topic.id) == 'in_progress' %}In progress{% else %}Open lesson{% endif %}</span><b>↗</b>
+</a>
+{% else %}<div class="empty-state"><h3>No matching lessons</h3><p>Try another search term or select all units.</p></div>{% endfor %}
+</div>
+{% endblock %}

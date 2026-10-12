@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Create Course · LDICA{% endblock %}
+{% block content %}
+<section class="page-heading"><p class="eyebrow">ACADEMIC ADMINISTRATION</p><h1>Create a course</h1><p>Start as a draft. Add learning outcomes and topic mappings before publishing.</p></section>
+<form class="form-card stacked-form" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><div class="form-grid"><label>Course code<input name="code" required minlength="2" maxlength="30" placeholder="LDICA-R23" value="{{ request.form.get('code','') }}"></label><label>Course title<input name="title" required minlength="4" maxlength="180" placeholder="Linear and Digital IC Applications"></label><label>Syllabus version<input name="syllabus_version" maxlength="40" value="R23"></label><label>Academic year<input name="academic_year" maxlength="20" placeholder="2026–2027"></label></div><label>Description<textarea name="description" rows="4" maxlength="5000" placeholder="Course scope, audience and delivery notes"></textarea></label><div class="form-actions"><button class="button button-primary" type="submit">Create draft course</button><a class="button button-secondary" href="{{ url_for('academic.index') }}">Cancel</a></div></form>
+{% endblock %}

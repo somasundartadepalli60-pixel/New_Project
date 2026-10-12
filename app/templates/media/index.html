@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Media Lab and Source PDFs | LDICA Master Learning Hub{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">VISUAL LEARNING LAB</span><h1>See the idea. <em>Test the behaviour.</em></h1><p>Explore local interactive demonstrations and open the uploaded course notes directly inside the website. Demos are instructional models, not substitutes for a component datasheet or exact circuit conditions.</p></section>
+<div class="section-heading"><div><span class="eyebrow">INTERACTIVE DEMOS</span><h2>Try the <em>concepts.</em></h2></div></div>
+<div class="media-grid">{% for demo in demos %}<article class="media-card"><div class="media-symbol">{{ ['△','◷','▥','↻'][loop.index0] }}</div><h3>{{ demo.title }}</h3><p>{{ demo.description }}</p><a class="button primary" href="{{ url_for('media.demo', slug=demo.slug) }}">Open demonstration →</a></article>{% endfor %}</div>
+
+<div class="source-search-panel">
+<form method="get" class="search-panel"><label class="search-field"><span>⌕</span><input name="q" value="{{ query }}" placeholder="Search words in the uploaded PDFs..." aria-label="Search source PDF text"></label><button class="button primary" type="submit">Search source notes</button></form>
+<p class="source-note">Search results are matched against extracted PDF text and show page numbers. Some uploaded PDFs are scan-heavy and yielded little extractable text; open the original PDF to verify every figure, equation, handwritten note, and scan-only page.</p>
+{% if query %}<div class="results-label"><span>{{ matches|length }} source-page matches for “{{ query }}”</span><span>Maximum 30 matches displayed</span></div><div class="source-list">{% for match in matches %}<a href="{{ url_for('static', filename='source-pdfs/' + match.file) }}#page={{ match.page }}" target="_blank" rel="noopener"><span><strong>{{ match.name }} · Page {{ match.page }}</strong><small>{{ match.excerpt }}</small></span><b>Open page ↗</b></a>{% else %}<div class="empty-state">No exact text matches found. Try a shorter term or open the original PDF.</div>{% endfor %}</div>{% endif %}
+</div>
+
+<div class="section-heading"><div><span class="eyebrow">ORIGINAL STUDY SOURCES</span><h2>Uploaded <em>unit PDFs.</em></h2></div></div>
+<div class="source-list">{% for source in sources %}<a href="{{ url_for('static', filename='source-pdfs/' + source.file) }}" target="_blank" rel="noopener"><span>📄 <strong>{{ source.name }}</strong><small>{{ source.description }}</small></span><b>Open PDF ↗</b></a>{% else %}<div class="empty-state">No source PDFs were packaged in this build. Add your original notes to app/static/source-pdfs to make them available here.</div>{% endfor %}</div>
+<p class="source-note">The original PDFs are preserved as source references. This build does not claim that every word, figure, derivation, or table from those PDFs has already been rewritten as an individual lesson. Use the source PDFs and topic checklist to audit coverage.</p>
+{% endblock %}

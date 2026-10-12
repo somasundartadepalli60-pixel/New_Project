@@ -1,0 +1,776 @@
+
+
+===== PAGE 1 =====
+
+UNIT-II
+Op-Amp, IC 555 & IC 565 Applications
+
+
+===== PAGE 2 =====
+
+Active Filters
+•Filters are 
+electronic 
+circuits 
+that 
+allow 
+certain 
+frequency 
+components and/or reject some others. They are passive and are the 
+electric circuits or networks that consist of passive elements like 
+resistors, capacitors, and an inductor.
+Types of Active Filters
+•Active filters are the electronic circuits, which consist of active 
+elements like op-amps along with passive elements like resistors and 
+capacitors.
+
+
+===== PAGE 3 =====
+
+Active filters are mainly classified into the following four types based 
+on the band of frequencies that they allow and/or reject −
+•Active Low Pass Filter
+•Active High Pass Filter
+•Active Band Pass Filter
+•Active Band Stop Filter
+
+
+===== PAGE 4 =====
+
+Active Low Pass Filter
+•If an active filter allows (passes) only low frequency components and rejects 
+(blocks) all other high frequency components, then it is called an active 
+low-pass filter.
+
+
+===== PAGE 5 =====
+
+• 
+•The electric network, which is connected to the non-inverting terminal of 
+an op-amp, is a passive low pass filter. So, the input of a non-inverting 
+terminal of an op-amp is the output of a passive low pass filter.
+•Observe that the above circuit resembles a non-inverting amplifier. It has 
+the output of a passive low pass filter as an input to the non-inverting 
+terminal of the op-amp. Hence, it produces an output, which is 
+times the input present at the non-inverting terminal.
+• The values of Rf and R1 can be suitably chosen to obtain the desired gain 
+at the output. Suppose, if we consider the resistance values of Rf and R1 
+as zero ohms and infinity ohms, then the above circuit will produce a 
+unity gain low pass filter output.
+
+
+===== PAGE 6 =====
+
+Active High Pass Filter
+•If an active filter allows (passes) only high frequency components and 
+rejects (blocks) all other low frequency components, then it is called 
+an active high pass filter.
+
+
+===== PAGE 7 =====
+
+• The electric network, which is connected to the non-inverting terminal 
+of an op-amp, is a passive high pass filter. Therefore, the input of a 
+non-inverting terminal of an op-amp is the output of a passive high-pass 
+filter.
+•Now, the above circuit resembles a non-inverting amplifier. It has the 
+output of a passive high-pass filter as its input to the non-inverting 
+terminal of the op-amp. Hence, it produces an output, which is (1+RfR1) 
+times the input present at its non-inverting terminal.
+• The values of Rf and R1 can be suitably chosen to obtain the desired gain 
+at the output. Suppose, if we consider the resistance values of Rf and R1 
+as zero ohms and infinity ohms, then the above circuit will produce a 
+unity gain high pass filter output.
+
+
+===== PAGE 8 =====
+
+Active Band Pass Filter
+•If an active filter allows (passes) only one band of frequencies, then it 
+is called an active band pass filter. In general, this frequency band 
+lies between the low-frequency range and the high-frequency range. 
+So, an active band pass filter rejects (blocks) both low and high 
+frequency components.
+
+
+===== PAGE 9 =====
+
+• There are two parts in the circuit diagram of an active band pass filter: The 
+first part is an active high pass filter, while the second part is an active low 
+pass filter.
+•The output of the active high pass filter is applied as an input to the active 
+low pass filter. That means, both active high pass filter and active low pass 
+filter are cascaded in order to obtain the output in such a way that it 
+contains only a particular band of frequencies.
+•The active high pass filter, which is present at the first stage, allows the 
+frequencies that are greater than the lower cut-off frequency of the active 
+band pass filter. So, we have to choose the values of RB  and CB  suitably to 
+obtain the desired lower cut-off frequency of the active band pass filter.
+
+
+===== PAGE 10 =====
+
+•Similarly, the active low pass filter, which is present at the second 
+stage, allows the frequencies that are smaller than the higher cut-off 
+frequency of the active band pass filter. 
+•So, the values of RA  and CA  are suitably chosen to obtain the desired 
+higher cut-off frequency of the active band pass filter.
+
+
+===== PAGE 11 =====
+
+Active Band Stop Filter
+•If an active filter rejects (blocks) a particular band of frequencies, 
+then it is called an active band stop filter. 
+•In general, this frequency band lies between the low frequency range 
+and high frequency range. So, an active band stop filter allows 
+(passes) both low and high frequency components.
+
+
+===== PAGE 12 =====
+
+• An active band stop filter consists of two blocks in its first stage: an 
+active low pass filter and an active high pass filter. 
+•The outputs of these two blocks are applied as inputs to the block 
+that 
+is 
+present 
+in 
+the 
+second 
+stage. 
+So, 
+the summing 
+amplifier produces an output, which is the amplified version of the 
+sum of the outputs of the active low pass filter and the active high 
+pass filter.
+•Therefore, the output of the above block diagram will be the output 
+of an active band stop, when we choose the cut-off frequency of low 
+pass filter to be smaller than the cut-off frequency of a high pass 
+filter.
+
+
+===== PAGE 13 =====
+
+
+
+===== PAGE 14 =====
+
+First Order Low Pass Butterworth Filter:
+•The first order low pass Butterworth filter is realized by an R-C circuit 
+along with an op-amp, used in the noninverting configuration. This is 
+also called one pole low pass Butterworth filter. The resistances 
+Rf and R1 decide the gain of the filter in the pass band.
+
+
+===== PAGE 15 =====
+
+Analysis for First Order Low Pass Butterworth Filter Circuit:
+•By the potential divider rule, the voltage at the noninverting input 
+terminal A is              which is the voltage across capacitor C, is given 
+as 
+By the potential divider rule, the voltage at the noninverting input 
+terminal A which is the voltage across capacitor C is given by,
+
+
+===== PAGE 16 =====
+
+As the op-amp is in the noninverting configuration,
+
+
+===== PAGE 17 =====
+
+where
+The Vo/Vin is the transfer function of the filter and can be expressed in the polar form as,
+
+
+===== PAGE 18 =====
+
+•Where
+•And
+
+
+===== PAGE 19 =====
+
+
+
+===== PAGE 20 =====
+
+•Thus, for the range of frequencies, 0 < f < fH, the gain is almost 
+constant, equal to fH , which is the high cut-off frequency. 
+•At f = fH, gain reduces to 0.707 AF i.e., 3 dB down from AF. And as the 
+frequency increases above fH, the gain decreases at a rate of 
+20dB/decade. 
+•The rate 20 dB/decade means a decrease of 20 dB in gain per 10 
+times change in frequency. 
+•The same rate can be expressed as 6 dB/octave, i.e. decrease of 6 dB 
+per two times change in the frequency. 
+•The frequency fH is called cut off frequency, break frequency, — 3dB 
+frequency, or corner frequency. 
+
+
+===== PAGE 21 =====
+
+Design Steps:
+•The design steps for the first order low pass Butterworth filter are
+•1) Choose the cut-off frequency, fH.
+•2) Choose the capacitance C, usually between 0.001 and 1 μF. Generally, it is 
+selected as 1 μF or less than that. For better performance, mylar or 
+tantalum capacitors are selected.
+•3) Now, for the RC circuit,
+Hence, as fH and C are known, calculate the value of R.
+4) The resistances Rf and R1 can be selected depending on the required gain in the pass band.
+
+
+===== PAGE 22 =====
+
+•Once the filter is designed, sometimes it is necessary to change the 
+value of the cut-off frequency fH. 
+•The method used to change the original cut-off frequency fH to a new 
+cut-off frequency fH1 is called frequency scaling.
+•To achieve such a frequency scaling, the standard value capacitor C is 
+selected first. 
+•The required cut-off frequency can be achieved by calculating the 
+corresponding value of resistance R. But to achieve frequency scaling, 
+a potentiometer is used.
+
+
+===== PAGE 23 =====
+
+First Order High Pass Butterworth Filter
+•High pass filters are often formed by interchanging frequency determining 
+resistors and capacitors in a low pass filter. 
+•A first order high pass Butterworth filter with a low cutoff frequency fL, the 
+frequency at which the magnitude of the gain is 0.707 times its passband 
+value. 
+•All frequencies higher than fL are in the pass band, with the highest 
+frequency determined by the closed loop band width of the op-amp.
+
+
+===== PAGE 24 =====
+
+
+
+===== PAGE 25 =====
+
+•For the first order high pass filter, the output voltage is
+where
+•AF = 1 + RF/R1 – pass band gain of the filter
+•f = frequency of the input signal
+•fL= 1/(2 π R C) – low cutoff frequency
+Hence, the magnitude of the voltage gain is
+
+
+===== PAGE 26 =====
+
+Waveform Generators
+•A waveform generator is an electronic circuit that generates a 
+standard wave. There are two types of op-amp based waveform 
+generators −
+•Square wave generator
+•Triangular wave generator
+
+
+===== PAGE 27 =====
+
+Square Wave Generator
+•A square wave generator is an electronic circuit that generates a 
+square wave. 
+
+
+===== PAGE 28 =====
+
+• The resistor R1 is connected between the inverting input terminal of the 
+op-amp and the output of the op-amp. Therefore, resistor R1 is used in the 
+negative feedback. 
+•Similarly, resistor R2 is connected between the non-inverting input terminal 
+of the op-amp and its output. Therefore, resistor R2 is used in the positive 
+feedback path.
+•A capacitor C is connected between the inverting input terminal of the 
+op-amp and ground. So, the voltage across capacitor C will be the input 
+voltage at this inverting terminal of the op-amp. 
+•Similarly, a resistor R3  is connected between the non-inverting input 
+terminal of the op-amp and ground.
+• So, the voltage across resistor R3 will be the input voltage at this 
+non-inverting terminal of the op-amp.
+
+
+===== PAGE 29 =====
+
+The operation of a square wave generator
+•Assume there is no charge stored in the capacitor initially. Then, the 
+voltage present at the inverting terminal of the op-amp is zero volts. 
+But there is some offset voltage at the non-inverting terminal of the 
+op-amp. As a result, the value at the output of the above circuit will 
+be +Vsat.
+•Now, the capacitor C starts charging through a resistor R1. The value 
+present at the output of the above circuit will change to −Vsat , when 
+the voltage across the capacitor C reaches just greater than the 
+voltage (positive value) across resistor R3.
+
+
+===== PAGE 30 =====
+
+•The capacitor C starts discharging through a resistor R1 when the 
+output of the above circuit is −Vsat . The value present at the output 
+of the above circuit will change to +Vsat when the voltage across 
+capacitor C reaches just less than (more negative) the voltage 
+(negative value) across resistor R3.
+
+
+===== PAGE 31 =====
+
+•The output of the square wave generator will have one of the two 
+values: +Vsat and −Vsat. So, the output remains at one value for 
+some duration and then transitions to another value and remains 
+there for some duration.
+
+
+===== PAGE 32 =====
+
+Triangular Wave Generator
+•A triangular wave generator is an electronic circuit that generates a triangular 
+wave.
+•The block diagram of a triangular wave generator contains mainly two blocks: 
+a square wave generator and an integrator. These two blocks are cascaded. 
+That means, the output of the square wave generator is applied as an input 
+of integrator. The integration of a square wave is nothing but a triangular 
+wave.
+
+
+===== PAGE 33 =====
+
+
+
+===== PAGE 34 =====
+
+•  Basically, a triangular wave is generated by alternatively charging and 
+discharging a capacitor with a constant current. 
+•This is achieved by connecting the integrator circuit at the output of the 
+square wave generator. Assume that V’ is high at +Vsat. 
+•This forces a constant current (+Vsat/R3) through C (left to right) to drive 
+Vo negative linearly. 
+•When V’ is low at -Vsat, it forces a constant current (-Vsat/R3) through C 
+(right to left) to drive Vo positive, linearly.
+•The frequency of the triangular wave is the same as that of the square 
+wave. 
+•Although the amplitude of the square wave is constant (± Vsat), the 
+amplitude of the triangular wave decreases with an increase in its 
+frequency, and vice versa. 
+•This is because the reactance of a capacitor decreases at high frequencies 
+and increases at low frequencies.
+•
+
+
+===== PAGE 35 =====
+
+
+
+===== PAGE 36 =====
+
+IC 555 Timer
+•The 555 Timer IC got its name from the three 5KΩ  resistors that are 
+used in its voltage divider network. 
+•This IC is useful for generating accurate time delays and oscillations.
+•This 555 Timer IC can be operated with a DC supply of +5V to +18V. 
+•It is mainly useful for generating non-sinusoidal wave forms like 
+square, ramp, pulse & etc.
+
+
+===== PAGE 37 =====
+
+
+
+===== PAGE 38 =====
+
+• Pin 1. – Ground, The ground pin connects the 555 timer to the negative (0v) supply rail.
+• Pin 2. – Trigger, The negative input to comparator No 1. A negative pulse on this pin “sets” the 
+internal Flip-flop when the voltage drops below 1/3Vcc, causing the output to switch from a “LOW” 
+to a “HIGH” state.
+• Pin 3. – Output, The output pin can drive any TTL circuit and is capable of sourcing or sinking up to 
+200mA of current at an output voltage equal to approximately Vcc – 1.5V so small speakers, LEDs, 
+or motors can be connected directly to the output.
+• Pin 4. – Reset. This pin is used to “reset” the internal Flip-flop controlling the state of the output, 
+pin 3. This is an active-low input and is generally connected to a logic “1” level when not used to 
+prevent any unwanted resetting of the output.
+• Pin 5. – Control Voltage, This pin controls the timing of the 555 by overriding the 2/3Vcc level of 
+the voltage divider network. By applying a voltage to this pin the width of the output signal can be 
+varied independently of the RC timing network. When not used, it is connected to ground via a 10nF 
+capacitor to eliminate any noise.
+• Pin 6. – Threshold, The positive input to comparator No 2. This pin is used to reset the Flip-flop 
+when the voltage applied to it exceeds 2/3Vcc, causing the output to switch from “HIGH” to “LOW” 
+state. This pin connects directly to the RC timing circuit.
+• Pin 7. – Discharge, The discharge pin is connected directly to the Collector of an internal NPN 
+transistor which is used to “discharge” the timing capacitor to ground when the output at pin 3 
+switches “LOW”.
+• Pin 8. – Supply +Vcc. This is the power supply pin, and for general-purpose TTL 555 timers is 
+between 4.5V and 15V.
+
+
+===== PAGE 39 =====
+
+Functional Diagram
+
+
+===== PAGE 40 =====
+
+•The functional diagram of the 555 Timer contains a voltage divider 
+network, two comparators, one SR flip-flop, two transistors, and an 
+inverter.
+Voltage Divider Network
+•The voltage divider network consists of three 5KΩ resistors that are 
+connected in series between the supply voltage Vcc and ground.
+•This network provides a voltage of Vcc/3 between a point and ground 
+if there exists only one 5KΩ resistor. Similarly, it provides a voltage of 
+2Vcc/3  between a point and ground if there exist only two 5KΩ 
+resistors.
+
+
+===== PAGE 41 =====
+
+Comparator
+•The functional diagram of a 555 Timer IC consists of two comparators: an 
+Upper Comparator (UC) and a Lower Comparator (LC).
+•Recall that a comparator compares the two inputs that are applied to it and 
+produces an output.
+•If the voltage present at the non-inverting terminal of an op-amp is greater 
+than the voltage present at its inverting terminal, then the output of the 
+comparator will be +Vsat. This can be considered as Logic High (‘1’) in digital 
+representation.
+•If the voltage present at the non-inverting terminal of the op-amp is less than 
+or equal to the voltage at its inverting terminal, then the output of the 
+comparator will be −Vsat. This can be considered as Logic Low ('0') in digital 
+representation.
+
+
+===== PAGE 42 =====
+
+SR Flip-Flop
+• An SR flip-flop operates with either positive clock transitions or negative clock 
+transitions. It has two inputs: S and R, and two outputs: Q(t) and Q(t). The 
+outputs, Q(t) & Q(t), are complementary to each other. 
+• S R
+Q(t+1)
+• 0 0
+Q(t)
+• 0 1
+0
+• 1 0
+1
+• 1 1
+-
+• Here, Q(t) & Q(t+1) are present state & next state respectively. So, the SR flip-flop 
+can be used for one of these three functions, such as Hold, Reset & Set based on 
+the input conditions, when positive (negative) transition of the clock signal is 
+applied.
+• The outputs of Lower Comparator (LC) and Upper Comparator (UC) are applied as 
+inputs of the SR flip-flop, as shown in the functional diagram of 555 Timer IC.
+
+
+===== PAGE 43 =====
+
+Transistors and Inverter
+•The functional diagram of a 555 Timer IC consists of one npn 
+transistor Q1  and one pnp transistor Q2. The npn transistor Q1  will 
+be turned ON if its base to emitter voltage is positive and greater 
+than the cut-in voltage. Otherwise, it will be turned-OFF.
+•The pnp transistor Q2  is used as a buffer to isolate the reset input 
+from the SR flip-flop and npn transistor Q1.
+•The inverter used in the functional diagram of a 555 Timer IC not only 
+performs the inverting action but also amplifies the power level.
+
+
+===== PAGE 44 =====
+
+Monostable Multivibrator Using IC 555
+•The IC 555 timer can be operated as a Monostable Multivibrator Using IC 
+555 by connecting an external resistor and a capacitor
+
+
+===== PAGE 45 =====
+
+•The circuit has only one stable state. When trigger is applied, it 
+produces a pulse at the output and returns back to its stable state.
+• The duration of the pulse depends on the values of R and C. As it has 
+only one stable state, it is called one shot multivibrator.
+Working of 555 Timer as Monostable Multivibrator:
+•The flip-flop is initially set i.e. Q is high. This drives the transistor Qd in 
+saturation. The capacitor discharges completely and voltage across it 
+is nearly zero. The output at pin 3 is low.
+•When a trigger input, a low going pulse is applied, then circuit state 
+remains unchanged till trigger voltage is greater than 1/3 VCC. 
+•When it becomes less than 1/3 VCC, then comparator 2 output goes 
+high. This resets the flip-flop so Q goes low and Qิ goes high. Low Q 
+makes the transistor Qd off. Hence capacitor starts charging through 
+resistance R
+
+
+===== PAGE 46 =====
+
+
+
+===== PAGE 47 =====
+
+•The voltage across capacitor increases exponentially. This voltage is nothing 
+but the threshold voltage at pin 6. When this voltage becomes more than 
+2/3 VCC, then comparator 1 output goes high. 
+•This sets the flip-flop i.e. Q becomes high and Qิ low. This high Q drives the 
+transistor Qd in saturation. Thus capacitor C quickly discharges through Qd.
+•So it can be noted that Vout at pin 3 is low at start, when trigger is less than 
+1/3 VCC it becomes high and when threshold is greater than 2/3 VCC again 
+becomes low, till next trigger pulse occurs. 
+•So a rectangular wave is produced at the output. The pulse width of this 
+rectangular pulse is controlled by the charging time of capacitor. This 
+depends on the time constant RC. Thus RC controls the pulse width. 
+
+
+===== PAGE 48 =====
+
+•Derivation of Pulse Width
+
+
+===== PAGE 49 =====
+
+•Schematic Diagram:
+•The external components R and C are shown. To avoid accidental 
+reset, pin 4 is connected to pin 8 which is supply +VCC. To have the 
+noise filtering of control voltage, the pin 5 is grounded through a 
+small capacitor of 0.01 μF.
+
+
+===== PAGE 50 =====
+
+•Monostable Multivibrator Using IC 555 Applications:
+The various applications of Monostable Multivibrator Using IC 555 are,
+•Frequency divider
+•Pulse width modulation
+•Linear ramp generator
+•Pulse position modulation
+•Missing pulse detector
+•Timer in relay
+
+
+===== PAGE 51 =====
+
+Astable Multivibrator Using IC 555
+•The threshold input is connected to the trigger input. Two external 
+resistances RA, RB and a capacitor C is used in the circuit.
+
+
+===== PAGE 52 =====
+
+Working of Astable Multivibrator using IC 555:
+•When the flip-flop is set, Q is high which drives the transistor Qd in 
+saturation and the capacitor gets discharged. 
+•Now the capacitor voltage is nothing but the trigger voltage. So while 
+discharging, when it becomes less than 1/3 VCC, comparator 2 output 
+goes high. This resets the flip-flop hence Q goes low and Qิ goes high.
+• The low Q makes the transistor off. 
+•Thus capacitor starts charging through the resistances RA, RB and VCC. 
+As total resistance in the charging path is (RA + RB), the charging time 
+constant is (RA + RB) C.
+
+
+===== PAGE 53 =====
+
+•Now the capacitor voltage is also a threshold voltage. While charging, 
+capacitor voltage increases i.e. the threshold voltage increases. 
+•When it exceeds 2/3 VCC, then the comparator 1 output goes high which sets 
+the flip-flop. The flip-flop output Q becomes high and output at pin 3 i.e. Qิ 
+becomes low. 
+•High Q drives transistor Qd in saturation and capacitor starts discharging 
+through resistance RB and transistor Qd. 
+•Thus the discharging time constant is RB C. When capacitor voltage becomes 
+less than 1/3 VCC, comparator 2 output goes high, resetting the flip-flop. This 
+cycle repeats.
+•Thus when capacitor is charging, output is high while when it is discharging 
+the output is low. The output is a rectangular wave. The capacitor voltage is 
+exponentially rising and falling. 
+
+
+===== PAGE 54 =====
+
+
+
+===== PAGE 55 =====
+
+•Duty Cycle of Astable Multivibrator
+•Generally the charging time constant is greater than the discharging 
+time constant. Hence at the output, the waveform is not symmetric.
+• The high output remains for longer period than low output. The ratio 
+of high output period and low output period is given by a 
+mathematical parameter called duty cycle. 
+•It is defined as the ratio of ON time i.e. high output to the total time 
+of one cycle.
+
+
+===== PAGE 56 =====
+
+
+
+===== PAGE 57 =====
+
+
+
+===== PAGE 58 =====
+
+•Schematic Diagram of 555 Timer Astable Multivibrator
+•It shows only the external components RA, RB and C. The pin 4 is tied 
+to pin 8 and pin 5 is grounded through a small capacitor.
+
+
+===== PAGE 59 =====
+
+Application of Astable Multivibrator using IC 555:
+•The various Application of Astable Multivibrator using IC 555 are,
+•Square wave generation
+•FSK generator
+•Voltage controlled oscillator (VCO)
+
+
+===== PAGE 60 =====
+
+Phase Locked Loop (PLL)
+• A Phase Locked Loop (PLL) is one of the vital blocks in linear systems. 
+It is useful in communication systems such as radars, satellites, FMs, 
+etc.
+•A Phase Locked Loop (PLL) mainly consists of the following three 
+blocks −
+•Phase Detector
+•Active Low Pass Filter
+•Voltage Controlled Oscillator (VCO)
+
+
+===== PAGE 61 =====
+
+
+
+===== PAGE 62 =====
+
+•The output of a phase detector is applied as an input of active low-pass filter. 
+Similarly, the output of the active low-pass filter is applied as an input of 
+VCO.
+The working of a PLL is as follows −
+•The phase detector block has two inputs, external signal and oscillator signal. 
+Phase detector detects the phase between two signals and develops an 
+output voltage proportional to phase difference. 
+•This block also called as phase detector or phase comparator. Output of 
+phase detector is passed through a LPF. 
+•It removes high frequency signal and passes only low frequencies. This filter 
+is also called as loop filter because the PLL system is a closed loop system. 
+
+
+===== PAGE 63 =====
+
+• The amplifier amplifies the output of the filter. This amplified output is 
+applied as input for the VCO. This input voltage adjusts the VCO frequency so 
+that it equals the signal frequency; i.e., the VCO converts an input voltage to 
+a frequency, acting as a voltage-to-frequency converter.
+•When the signal frequency and VCO frequency is same, the loop gets locked. 
+The loop gets locked by detecting the phase difference between two inputs, 
+so called Phase Locked Loop (PLL). 
+•Without application of any external signal, VCO has a frequency called as 
+free running frequency or centre frequency. In this initial condition loop is 
+not locked, i.e., in an open condition.
+•When external signal is applied its frequency is either less or greater than 
+VCO frequency so there is a phase difference between them. Phase detector 
+detects the phase difference between two inputs and generates an error 
+voltage. This is passed through LPF.
+
+
+===== PAGE 64 =====
+
+•After amplification, it is given as a controlled voltage. This adjusts the 
+frequency of the VCO such that the input frequency is equal to the VCO 
+frequency and forms a locked condition. This process of locking the loop 
+is called the capture effect.
+•The time required for VCO to adjust its frequency with the signal 
+frequency is called capture time. It depends on the internal parameters 
+of the system. There is a limit for the input signal for which the system 
+can acquire a locked condition. This range of frequency between which 
+the system can goes into locked condition is called capture range. This 
+range is symmetrical about centre frequency. This capture range 
+depends upon filter and amplifier characteristics.
+•If system acquires a locked condition then even if the signal frequency 
+changes the loop remains in locked condition. The range of input 
+frequency over which the locked condition maintained is called locked 
+range. This also depends on amplifier and filter characteristics. 
+
+
+===== PAGE 65 =====
+
+•The above operations take place until the VCO frequency equals the 
+input signal frequency. Based on the type of application, we can use 
+either the output of an active low-pass filter or the output of a VCO. 
+PLLs are used in many applications such as FM demodulators, clock 
+generator etc.
+•PLL operates in one of the following three modes −
+•Free running mode
+•Capture mode
+•Lock mode
+
+
+===== PAGE 66 =====
+
+•Initially, the PLL operates in free running mode when no input is 
+applied to it. When an input signal having some frequency is applied 
+to the PLL, then the output signal frequency of the VCO will start 
+change. 
+•At this stage, the PLL is said to be operating in the capture mode. The 
+output signal frequency of the VCO will change continuously until it is 
+equal to the input signal frequency. Now, it is said that PLL is 
+operating in the lock mode.
+
+
+===== PAGE 67 =====
+
+
+
+===== PAGE 68 =====
+
+•IC 565 PLL Block Diagram:
+•The block diagram of IC 565 PLL consists of a phase detector, 
+amplifier, low pass filter, and VCO. 
+•Therefore, it is necessary to connect the output of the VCO (pin 4) to 
+the phase comparator input (pin 5) externally. 
+•In frequency multiplication applications, a digital frequency divider is 
+inserted into the loop, i.e., between pin 4 and pin 5.
+
+
+===== PAGE 69 =====
+
+
+
+===== PAGE 70 =====
+
+•The centre frequency of the PLL is determined by the free-running 
+frequency of the VCO, and it is given as, 
+where R1 and C1 are an external resistor and a capacitor connected to pins 8 and 9, 
+respectively. The values of R1 and C1 are adjusted such that the free-running 
+frequency will be at the centre of the input frequency range. 
+The value of R1 is restricted from 2kΩ to 20 kΩ but a capacitor can have any value. A 
+capacitor C2 connected between pin 7 and the positive supply (pin 10) forms a 
+first-order low-pass filter with an internal resistance of 3.6 kΩ. 
+The value of filter capacitor C2 should be large enough to eliminate possible 
+oscillations in the VCO voltage.
+
+
+===== PAGE 71 =====
+
+•The lock range and capture range for IC 565 PLL are given by the 
+following equations :
+
+
+===== PAGE 72 =====
+
+•where C2 is in farads.
+•From equation 2 we can notice that lock range increases with an 
+increase in input voltage but decreases with increase in supply 
+voltage. 
+•The two inputs (pin 2 and pin 3) to the phase detector allows direct 
+coupling of an input signal, provided that there is no dc voltage 
+difference between the pins and, the dc resistances seen from pins 2 
+and 3 are equal. 
+•A reference voltage at pin 6 is approximately equal to the dc voltage 
+of the demodulated output at pin 7. This reference voltage may be 
+used as a comparator input in applications like frequency shift keying.

@@ -1,0 +1,388 @@
+
+
+===== PAGE 1 =====
+
+ UNIT-III 
+Data Converters 
+
+
+===== PAGE 2 =====
+
+ Introduction 
+•The signal can be analog or digital by nature.
+• Sometimes there is a need to convert analog signal into digital equivalent 
+and vice versa.
+•The electronics circuits used for such a conversion are called as data 
+converters.
+•Most of the physical quantities, such as temperature, pressure, 
+displacement, vibrations, etc., are available in analog form. 
+•These quantities are represented accurately in analog form, but it is 
+difficult to process, store or transmit the analog signal because error gets 
+introduced easily due to noise.
+
+
+===== PAGE 3 =====
+
+•The digital representation of a signal makes it possible to process simpler 
+and transmit more easily.
+•Therefore A to D conversion is necessary. now once the processing, 
+transmission, etc. is done, the signal should be back to its analog form, for 
+which the D to A conversion is essential.
+•Both A to D and D to A circuits are called data converters, and they are 
+available in IC form.
+Types of Data Converters
+•The data converters are basically of two types:
+•Digital to Analog Converters (DACs)
+•Analog to Digital Converters (ADCs)
+
+
+===== PAGE 4 =====
+
+
+
+===== PAGE 5 =====
+
+Digital to Analog Converters
+•A Digital to Analog Converter (DAC) converts a digital input signal 
+into an analog output signal. The digital signal is represented with a 
+binary code, which is a combination of bits 0 and 1. 
+•A Digital to Analog Converter (DAC) consists of a number of binary 
+inputs and a single output. In general, the number of binary inputs of 
+a DAC will be a power of two.
+The block diagram of DAC
+
+
+===== PAGE 6 =====
+
+Weighted Resistor DAC
+•A weighted resistor DAC produces an analog output, which is almost 
+equal to the digital (binary) input by using binary weighted 
+resistors in the inverting adder circuit. 
+
+
+===== PAGE 7 =====
+
+•Let the 3-bit binary input be b2b1b0. Here, the bits b2  and b0 
+denote the Most Significant Bit (MSB) and Least Significant Bit (LSB), 
+respectively.
+•The digital switches will be connected to ground when the 
+corresponding input bits are equal to 0. Similarly, the digital switches 
+shown in the above figure will be connected to the negative 
+reference voltage, −VR, when the corresponding input bits are equal 
+to 1.
+• The non-inverting input terminal of an op-amp is connected to 
+ground. That means zero volts is applied at the non-inverting input 
+terminal of the op-amp.
+•According to the virtual short concept, the voltage at the inverting 
+input terminal of the opamp is same as that of the voltage present at 
+its non-inverting input terminal. So, the voltage at the inverting input 
+terminals node will be zero volts.
+
+
+===== PAGE 8 =====
+
+
+
+===== PAGE 9 =====
+
+•The above equation represents the output voltage equation of a 3-bit 
+binary weighted resistor DAC. Since the number of bits is three in the 
+binary (digital) input, we will get seven possible values of output 
+voltage by varying the binary input from 000 to 111 for a fixed 
+reference voltage, VR.
+•The generalized output voltage equation of an N-bit binary weighted 
+resistor DAC, based on the output voltage equation of a 3-bit binary 
+weighted resistor DAC as 
+
+
+===== PAGE 10 =====
+
+The disadvantages of a binary weighted resistor DAC are as follows −
+•The difference between the resistance values corresponding to LSB & 
+MSB will increase as the number of bits present in the digital input 
+increases.
+•It is difficult to design more accurate resistors as the number of bits 
+present in the digital input increases.
+
+
+===== PAGE 11 =====
+
+R-2R Ladder DAC
+•The R-2R Ladder DAC overcomes the disadvantages of a binary weighted 
+resistor DAC.
+• The R-2R Ladder DAC produces an analog output, which is almost equal to 
+the digital (binary) input by using a R-2R ladder network in the inverting 
+adder circuit.
+
+
+===== PAGE 12 =====
+
+•Let the 3-bit binary input be b2b1b0. Here, the bits b2 and b0 denote the 
+Most Significant Bit (MSB) and Least Significant Bit (LSB), respectively.
+•The digital switches shown in the above figure will be connected to 
+ground when the corresponding input bits are equal to 0. 
+•Similarly, the digital switches will be connected to the negative reference 
+voltage, −VR, when the corresponding input bits are equal to 1.
+•It is difficult to get the generalized output voltage equation of an R-2R 
+Ladder DAC. 
+
+
+===== PAGE 13 =====
+
+The advantages of an R-2R Ladder DAC are as follows −
+•R-2R Ladder DAC contains only two values of resistors: R and 2R. So, it 
+is easy to select and design more accurate resistors.
+•If more number of bits are present in the digital input, then we have 
+to include the required number of R-2R sections additionally.
+
+
+===== PAGE 14 =====
+
+Analog to Digital Converter
+•An analog-to-digital converter, also known as ADC, is a digital circuit 
+used to convert analog signals into digital format.
+•The conversion of analog signals into digital format is crucial for their 
+processing with the help of digital systems like microprocessors, 
+microcontrollers, digital signal processors (DSPs), etc. 
+•Therefore, ADCs are important components in many digital systems, 
+such as computers and other digital devices.
+•An Analog to Digital Converter (ADC) converts an analog signal into a 
+digital signal. The digital signal is represented with a binary code, 
+which is a combination of bits 0 and 1.
+
+
+===== PAGE 15 =====
+
+What is an Analog to Digital Converter?
+•An analog to digital converter is a digital circuit designed to perform the 
+conversion of analog signals into digital data format. It is also known as ADC. 
+Analog-to-digital converters are essential components in digital systems 
+such as computers, data processors, and digital communication systems.
+
+
+===== PAGE 16 =====
+
+• An Analog to Digital Converter (ADC) consists of a single analog input and 
+many binary outputs. In general, the number of binary outputs of an ADC will 
+be a power of two.
+•There are two types of ADCs: Direct type ADCs and Indirect-type ADCs.
+•If the ADC performs the analog to digital conversion directly by utilizing the 
+internally generated equivalent digital (binary) code for comparing with the 
+analog input, then it is called as Direct type ADC. 
+•The following are  examples of Direct type ADCs −
+•Counter type ADC
+•Successive Approximation ADC
+•Flash type ADC
+
+
+===== PAGE 17 =====
+
+Counter type ADC
+•A counter type ADC produces a digital output, which is approximately equal 
+to the analog input by using counter operation internally. 
+
+
+===== PAGE 18 =====
+
+•The counter type ADC mainly consists of 5 blocks: Clock signal generator, 
+Counter, DAC, Comparator, and Control logic.
+The working of a counter type ADC is as follows −
+•The control logic resets the counter and enables the clock signal generator 
+to send the clock pulses to the counter when it receives the start 
+commanding signal.
+•The counter gets incremented by one for every clock pulse, and its value will 
+be in binary (digital) format. The output of the counter is applied as an input 
+of DAC.
+•DAC converts the received binary (digital) input, which is the output of the 
+counter, into an analog output. Comparator compares this analog value, Va, 
+with the external analog input value Vi
+
+
+===== PAGE 19 =====
+
+•The output of the comparator will be 1 as long as it is greater than. The 
+operations mentioned in the above two steps will be continued as long as 
+the control logic receives 1 from the output of the comparator.
+•The output of the comparator will be 0 when Vi is less than or equal to Va. 
+So, the control logic receives 0 from the output of the comparator. 
+•Then, the control logic disables the clock signal generator so that it 
+doesn’t send any clock pulse to the counter.
+•At this instant, the output of the counter will be displayed as the digital 
+output. It is almost equivalent to the corresponding external analog input 
+value Vi.
+
+
+===== PAGE 20 =====
+
+Successive Approximation ADC
+•A successive approximation type ADC produces a digital output, 
+which is approximately equal to the analog input by using the 
+successive approximation technique internally.
+
+
+===== PAGE 21 =====
+
+•The successive approximation ADC mainly consists of 5 blocks− Clock 
+signal generator, Successive Approximation Register (SAR), DAC, 
+comparator, and Control logic.
+The working of a successive approximation ADC is as follows −
+•The control logic resets all the bits of SAR and enables the clock signal 
+generator to send the clock pulses to SAR when it receives the start 
+commanding signal.
+•The binary (digital) data present in SAR will be updated for every 
+clock pulse based on the output of the comparator. The output of 
+SAR is applied as an input to DAC.
+
+
+===== PAGE 22 =====
+
+•DAC converts the received digital input, which is the output of SAR, 
+into an analog output. The comparator compares this analog value, 
+Va, with the external analog input value Vi.
+•The output of a comparator will be 1 as long as Vi is greater than Va. 
+Similarly, the output of the comparator will be 0 when Vi
+• is less than or equal to Va.
+•The operations mentioned in the above steps will be continued until 
+the digital output is a valid one.
+•The digital output will be a valid one, when it is almost equivalent to 
+the corresponding external analog input value Vi
+
+
+===== PAGE 23 =====
+
+Flash type ADC
+•A flash type ADC produces an equivalent digital output for a corresponding 
+analog input in no time. Hence, flash-type ADC is the fastest ADC.
+•The 3-bit flash type ADC consists of a voltage divider network, 7 comparators, 
+and a priority encoder.
+The working of a 3-bit flash type ADC is as follows.
+•The voltage divider network contains 8 equal resistors. A reference voltage 
+VR  is applied across that entire network with respect to the ground. 
+•The voltage drop across each resistor from bottom to top with respect to 
+ground will be the integer multiples (from 1 to 8) of VR8.
+•The external input voltage Vi is applied to the non-inverting terminal of all 
+comparators. The voltage drop across each resistor from bottom to top with 
+respect to ground is applied to the inverting terminal of comparators from 
+bottom to top.
+
+
+===== PAGE 24 =====
+
+
+
+===== PAGE 25 =====
+
+• At a time, all the comparators compare the external input voltage 
+with the voltage drops present at the respective other input terminal. 
+That means the comparison operations take place in each 
+comparator.
+•The output of the comparator will be 1 as long as Vi is greater than 
+the voltage drop present at the respective other input terminal. 
+Similarly, the output of the comparator will be 0 when Vi is less than 
+or equal to the voltage drop present at the respective other input 
+terminal.
+•All the outputs of comparators are connected as the inputs of the 
+priority encoder. This priority encoder produces a binary code (digital 
+output), which corresponds to the high-priority input that has 1.
+
+
+===== PAGE 26 =====
+
+•Therefore, the output of the priority encoder is nothing but the 
+binary equivalent (digital output) of the external analog input voltage, 
+Vi.
+•The flash type ADC is used in applications where the conversion 
+speed of analog input into digital data should be very high.
+
+
+===== PAGE 27 =====
+
+Indirect Type ADC
+•If an ADC performs the analog to digital conversion by an indirect 
+method, then it is called an Indirect type ADC.
+•In general, first it converts the analog input into a linear function of 
+time (or frequency), and then it produces the digital (binary) output.
+• The dual slope ADC is the best example of an Indirect type ADC. 
+Dual Slope ADC
+•As the name suggests, a dual slope ADC produces an equivalent 
+digital output for a corresponding analog input by using two (dual) 
+slope technique.
+
+
+===== PAGE 28 =====
+
+
+
+===== PAGE 29 =====
+
+• The dual slope ADC mainly consists of 5 blocks: Integrator, Comparator, 
+Clock signal generator, Control logic, and Counter.
+The working of a dual slope ADC is as follows −
+• The control logic resets the counter and enables the clock signal generator 
+to send the clock pulses to the counter when the start commanding signal.
+• Control logic pushes the switch sw to connect to the external analog input 
+voltage Vi when the start commanding signal. This input voltage is applied 
+to an integrator.
+• The output of the integrator is connected to one of the two inputs of the 
+comparator, and the other input of the comparator is connected to ground.
+
+
+===== PAGE 30 =====
+
+•Comparator compares the output of the integrator with zero volts 
+(ground) and produces an output, which is applied to the control 
+logic.
+•The counter gets incremented by one for every clock pulse, and its 
+value will be in binary (digital) format. It produces an overflow signal 
+to the control logic when it is incremented after reaching the 
+maximum count value. At this instant, all the bits of the counter will 
+have zeros only.
+•Now, the control logic pushes the switch sw to connect to the 
+negative reference voltage −Vref. This negative reference voltage is 
+applied to an integrator. It removes the charge stored in the capacitor 
+until it becomes zero.
+
+
+===== PAGE 31 =====
+
+•At this instant, both the inputs of a comparator are at zero volts. So, 
+the comparator sends a signal to the control logic.
+• Now, the control logic disables the clock signal generator and retains 
+(holds) the counter value. 
+•The counter value is proportional to the external analog input 
+voltage.
+•At this instant, the output of the counter will be displayed as the 
+digital output.
+•It is almost equivalent to the corresponding external analog input 
+value Vi.
+•The dual slope ADC is used in applications where accuracy is more 
+important while converting analog input into its equivalent digital 
+(binary) data.
+
+
+===== PAGE 32 =====
+
+Specifications
+Resolution
+•Resolution is the minimum amount of change needed in an analog 
+input voltage for it to be represented in a binary (digital) output. It 
+depends on the number of bits that are used in the digital output.
+•Resolution can also be defined as the ratio of the maximum analog 
+input voltage that can be represented in binary and the equivalent 
+binary number. Mathematically, resolution can be represented as
+VFS   is the full-scale input voltage or the maximum analog input voltage,
+N is the number of bits that are present in the digital output.
+
+
+===== PAGE 33 =====
+
+Conversion Time: The amount of time required for a data converter to 
+convert the data (information) of one form into its equivalent data in another 
+form is called conversion time.
+•Settling Time: Time taken for the output to reach a stable value within a 
+specified percentage.
+•Monotonicity: Ensures the output voltage always increases or stays 
+constant as the digital input increases.
+•Accuracy: Absolute accuracy is the maximum deviation between the actual 
+converter output and the ideal converter output. Relative accuracy is the 
+maximum deviation after gain and offset errors have been removed.
