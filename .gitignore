@@ -5,6 +5,7 @@ __pycache__/
 *.db
 instance/
 .env
+.env.*
 .pytest_cache/
 .coverage
 htmlcov/
